@@ -80,9 +80,9 @@ ifeq '$(NO_DOCKER)' ''
 endif
 
 .PHONY: _gh-pages gh-pages
+ifneq '$(GHPAGES_SRC)' ''
 gh-pages: _gh-pages
 _gh-pages: commit
-ifneq '$(GHPAGES_SRC)' ''
 	if [ ! -d ../$(notdir $(CURDIR)).gh-pages ]; then git clone -b gh-pages `git config --get remote.origin.url` ../$(notdir $(CURDIR)).gh-pages; fi
 	cd ../$(notdir $(CURDIR)).gh-pages && git pull
 	rsync -rv --delete --exclude=.git/ $(GHPAGES_SRC) ../$(notdir $(CURDIR)).gh-pages
