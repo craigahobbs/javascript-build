@@ -52,7 +52,7 @@ _test: build/npm.build
 .PHONY: _cover cover
 cover: _cover
 _cover: _test build/npm.build
-    # Note: Remove the following line and the dependency on "_test" when "esm" (for Ava) module is removed
+    # Note: When the "esm" (for Ava) module is removed, remove the line below and the "_test" dependency above
 	rm -rf node_modules/.cache/esm
 	$(NODE_DOCKER) npx nyc $(NYC_ARGS) --cache true --cache-dir build/nyc-cache --check-coverage --reporter html --reporter text --report-dir build/coverage --temp-dir build/tmp \
 		npm test -- $(if $(TEST),--match '$(TEST)')
