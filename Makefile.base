@@ -17,7 +17,7 @@ JSDOC_VERSION ?= ~3.6.0
 NYC_VERSION ?= ~15.1.0
 
 # jsdoc
-JSDOC_ARGS ?= src
+JSDOC_ARGS ?= -c jsdoc.json src
 
 # gh-pages source paths
 GHPAGES_SRC ?= src/
@@ -54,7 +54,7 @@ cover: _cover
 _cover: _test build/npm.build
     # Note: When the "esm" (for Ava) module is removed, remove the line below and the "_test" dependency above
 	rm -rf node_modules/.cache/esm
-	$(NODE_DOCKER) npx nyc $(NYC_ARGS) --cache true --cache-dir build/nyc-cache --check-coverage --reporter html --reporter text --report-dir build/coverage --temp-dir build/tmp \
+	$(NODE_DOCKER) npx nyc $(NYC_ARGS) --check-coverage --reporter html --reporter text --report-dir build/coverage --temp-dir build/tmp \
 		npm test -- $(if $(TEST),--match '$(TEST)')
 
 .PHONY: _lint lint
