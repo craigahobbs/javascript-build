@@ -1,13 +1,7 @@
 {
-    "opts": {
-        "template": "node_modules/clean-jsdoc-theme",
-        "theme_opts": {
-            "menu" : [
-                {
-                    "title": "Type Model",
-                    "link": "doc#name=TypeModel"
-                }
-            ]
+    "templates": {
+        "default": {
+            "includeDate": false
         }
     }
 }
