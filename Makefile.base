@@ -60,7 +60,7 @@ _cover: _test build/npm.build
 .PHONY: _lint lint
 lint: _lint
 _lint: build/npm.build
-	$(NODE_DOCKER) npx eslint $(ESLINT_ARGS) -c .eslintrc.js -f unix .eslintrc.js src
+	$(NODE_DOCKER) npx eslint $(ESLINT_ARGS) -c .eslintrc.cjs -f unix .eslintrc.cjs src
 
 .PHONY: _doc doc
 doc: _doc
