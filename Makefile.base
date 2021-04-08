@@ -20,7 +20,7 @@ NYC_VERSION ?= ~15.1.0
 JSDOC_ARGS ?= -c jsdoc.json src
 
 # gh-pages source paths
-GHPAGES_SRC ?= src/
+GHPAGES_SRC ?= $(filter-out src/tests/,$(wildcard src/*/))
 
 build/npm.build:
 ifeq '$(NO_DOCKER)' ''
@@ -60,7 +60,7 @@ _cover: _test build/npm.build
 .PHONY: _lint lint
 lint: _lint
 _lint: build/npm.build
-	$(NODE_DOCKER) npx eslint $(ESLINT_ARGS) -c .eslintrc.js -f unix .eslintrc.js src tests
+	$(NODE_DOCKER) npx eslint $(ESLINT_ARGS) -c .eslintrc.js -f unix .eslintrc.js src
 
 .PHONY: _doc doc
 doc: _doc

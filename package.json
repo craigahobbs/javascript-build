@@ -4,7 +4,7 @@
     },
     "ava": {
         "files": [
-            "tests/**/*.js"
+            "src/tests/**/*.js"
         ],
         "require": [
             "esm"
@@ -15,8 +15,7 @@
         "branches": 100,
         "exclude": [],
         "include": [
-            "src/**/*.js",
-            "tests/**/*.js"
+            "src/**/*.js"
         ],
         "lines": 100
     },
