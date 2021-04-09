@@ -5,15 +5,15 @@
 .DEFAULT_GOAL := help
 
 # Node
-NODE_IMAGE ?= node:14-slim
+NODE_IMAGE ?= node:15-slim
 NODE_DOCKER := $(if $(NO_DOCKER),,docker run --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build $(NODE_IMAGE))
 
 # Develpment dependencies
-AVA_VERSION ?= ~4.0.0-alpha.2
-BROWSER_ENV_VERSION ?= ~3.3.0
-C8_VERSION ?= ~7.7.0
-ESLINT_VERSION ?= ~7.23.0
-JSDOC_VERSION ?= ~3.6.0
+AVA_VERSION ?= 4.0.0-alpha.2
+BROWSER_ENV_VERSION ?= ~3.3
+C8_VERSION ?= ~7.7
+ESLINT_VERSION ?= ~7.23
+JSDOC_VERSION ?= ~3.6
 
 # jsdoc
 JSDOC_ARGS ?= -c jsdoc.json src
@@ -25,7 +25,7 @@ build/npm.build:
 ifeq '$(NO_DOCKER)' ''
 	if [ "$$(docker images -q $(NODE_IMAGE))" = "" ]; then docker pull -q $(NODE_IMAGE); fi
 endif
-	$(NODE_DOCKER) npm install --save-dev \
+	$(NODE_DOCKER) npm install --save-exact --save-dev \
 		ava@$(AVA_VERSION) \
 		browser-env@$(BROWSER-ENV_VERSION) \
 		c8@$(C8_VERSION) \
