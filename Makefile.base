@@ -31,7 +31,6 @@ endif
 		browser-env@$(BROWSER-ENV_VERSION) \
 		c8@$(C8_VERSION) \
 		eslint@$(ESLINT_VERSION) \
-		esm@$(ESM_VERSION) \
 		jsdoc@$(JSDOC_VERSION)
 	mkdir -p $(dir $@)
 	touch $@
@@ -51,9 +50,7 @@ _test: build/npm.build
 
 .PHONY: _cover cover
 cover: _cover
-_cover: _test build/npm.build
-    # Note: When the "esm" (for Ava) module is removed, remove the line below and the "_test" dependency above
-	rm -rf node_modules/.cache/esm
+_cover: build/npm.build
 	$(NODE_DOCKER) npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \
 		--check-coverage --reporter html --reporter text --branches 100 --lines 100  $(COVER_ARGS) \
 		npm test -- $(if $(TEST),--match '$(TEST)')
