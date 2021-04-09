@@ -9,7 +9,7 @@ NODE_IMAGE ?= node:14-slim
 NODE_DOCKER := $(if $(NO_DOCKER),,docker run --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build $(NODE_IMAGE))
 
 # Develpment dependencies
-AVA_VERSION ?= ~3.15.0
+AVA_VERSION ?= ~4.0.0-alpha.2
 BROWSER_ENV_VERSION ?= ~3.3.0
 C8_VERSION ?= ~7.7.0
 ESLINT_VERSION ?= ~7.23.0

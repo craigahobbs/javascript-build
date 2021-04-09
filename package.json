@@ -2,13 +2,5 @@
     "type": "module",
     "scripts": {
         "test": "ava"
-    },
-    "ava": {
-        "files": [
-            "src/tests/**/*.js"
-        ],
-        "require": [
-            "esm"
-        ]
     }
 }
