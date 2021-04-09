@@ -45,14 +45,14 @@ commit: test lint doc cover
 .PHONY: _test test
 test: _test
 _test: build/npm.build
-	$(NODE_DOCKER) npm test -- $(if $(TEST),--match '$(TEST)')
+	$(NODE_DOCKER) npx ava -v $(if $(TEST),--match '$(TEST)') 'src/tests/**/*.js'
 
 .PHONY: _cover cover
 cover: _cover
 _cover: build/npm.build
 	$(NODE_DOCKER) npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \
 		--check-coverage --reporter html --reporter text --branches 100 --lines 100  $(COVER_ARGS) \
-		npm test -- $(if $(TEST),--match '$(TEST)')
+		npx ava -v $(if $(TEST),--match '$(TEST)') 'src/tests/**/*.js'
 
 .PHONY: _lint lint
 lint: _lint
