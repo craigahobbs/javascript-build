@@ -12,7 +12,7 @@ NODE_DOCKER := $(if $(NO_DOCKER),,docker run --rm -u `id -u`:`id -g` -v `pwd`:`p
 AVA_VERSION ?= 4.0.0-alpha.2
 BROWSER_ENV_VERSION ?= ~3.3
 C8_VERSION ?= ~7.7
-ESLINT_VERSION ?= ~7.23
+ESLINT_VERSION ?= ~7.24
 JSDOC_VERSION ?= ~3.6
 
 # jsdoc
