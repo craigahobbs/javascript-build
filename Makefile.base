@@ -6,7 +6,7 @@
 
 # Node
 NODE_IMAGE ?= node:15-slim
-NODE_DOCKER := $(if $(NO_DOCKER),,docker run --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build $(NODE_IMAGE))
+NODE_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build $(NODE_IMAGE))
 
 # Develpment dependencies
 AVA_VERSION ?= 4.0.0-alpha.2
@@ -85,3 +85,8 @@ _gh-pages: commit
 	rsync -rv --delete --exclude=.git/ $(GHPAGES_SRC) ../$(notdir $(CURDIR)).gh-pages
 	touch ../$(notdir $(CURDIR)).gh-pages/.nojekyll
 endif
+
+.PHONY: _publish publish
+publish: _publish
+_publish: build/npm.build
+	$(NODE_DOCKER) npm login && $(NODE_DOCKER) npm publish && $(NODE_DOCKER) npm logout
