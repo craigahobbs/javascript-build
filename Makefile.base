@@ -37,7 +37,7 @@ endif
 .PHONY: _help help
 help: _help
 _help:
-	@echo 'usage: make [clean|commit|cover|doc|gh-pages|lint|superclean|test]'
+	@echo 'usage: make [clean|commit|cover|doc|gh-pages|lint|publish|superclean|test]'
 
 .PHONY: commit
 commit: test lint doc cover
