@@ -1,6 +1,6 @@
 # -*- makefile-gmake -*-
 # Licensed under the MIT License
-# https://github.com/craigahobbs/javascript-build/blob/master/LICENSE
+# https://github.com/craigahobbs/javascript-build/blob/main/LICENSE
 
 .DEFAULT_GOAL := help
 

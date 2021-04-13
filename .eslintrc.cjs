@@ -1,5 +1,5 @@
 // Licensed under the MIT License
-// https://github.com/craigahobbs/javascript-build/blob/master/LICENSE
+// https://github.com/craigahobbs/javascript-build/blob/main/LICENSE
 
 
 // eslint-disable-next-line no-undef
