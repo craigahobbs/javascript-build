@@ -5,15 +5,16 @@
 .DEFAULT_GOAL := help
 
 # Node
-NODE_IMAGE ?= node:15-slim
+NODE_IMAGE ?= node:16-slim
 NODE_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build $(NODE_IMAGE))
 
 # Develpment dependencies
 AVA_VERSION ?= 4.0.0-alpha.2
 BROWSER_ENV_VERSION ?= ~3.3
 C8_VERSION ?= ~7.7
-ESLINT_VERSION ?= ~7.24
+ESLINT_VERSION ?= ~7.25
 JSDOC_VERSION ?= ~3.6
+WINDOW_VERSION ?= ~4.2
 
 # jsdoc
 JSDOC_ARGS ?= -c jsdoc.json src
@@ -27,10 +28,11 @@ ifeq '$(NO_DOCKER)' ''
 endif
 	$(NODE_DOCKER) npm install --save-exact --save-dev \
 		ava@$(AVA_VERSION) \
-		browser-env@$(BROWSER-ENV_VERSION) \
+		browser-env@$(BROWSER_ENV_VERSION) \
 		c8@$(C8_VERSION) \
 		eslint@$(ESLINT_VERSION) \
-		jsdoc@$(JSDOC_VERSION)
+		jsdoc@$(JSDOC_VERSION) \
+		window@$(WINDOW_VERSION)
 	mkdir -p $(dir $@)
 	touch $@
 
@@ -51,8 +53,8 @@ _test: build/npm.build
 cover: _cover
 _cover: build/npm.build
 	$(NODE_DOCKER) npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \
-		--check-coverage --reporter html --reporter text --branches 100 --lines 100  $(COVER_ARGS) \
-		npx ava -v $(if $(TEST),--match '$(TEST)') 'src/tests/**/*.js'
+		--check-coverage --reporter html --reporter text --branches 100 --lines 100  $(C8_ARGS) \
+		npx ava -v $(if $(TEST),--match '$(TEST)') $(AVA_ARGS) 'src/tests/**/*.js'
 
 .PHONY: _lint lint
 lint: _lint
