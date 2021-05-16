@@ -49,7 +49,7 @@ class JavaScriptBuildTest(unittest.TestCase):
         actual_clean = re.sub(r"@'[~|^]?\d+.*?'", "@'X.X.X'", actual_clean, flags=re.MULTILINE)
 
         # Cleanup make message for macOS
-        actual_clean = re.sub(r'^make\[\d+\]:\s(Nothing to be done for )`', r"make: \1'", actual_clean, flags=re.MULTILINE)
+        actual_clean = re.sub(r'^(make: Nothing to be done for )`', r"\1'", actual_clean, flags=re.MULTILINE)
 
         # Cleanup leading tabs for macOS
         actual_clean = re.sub(r'^\t\t', r'\t', actual_clean, flags=re.MULTILINE)
@@ -63,13 +63,13 @@ class JavaScriptBuildTest(unittest.TestCase):
         ])
         with test_files as test_dir:
             self.assert_make_output(
-                subprocess.check_output(['make', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 echo 'usage: make [changelog|clean|commit|cover|doc|gh-pages|lint|publish|superclean|test]'
 '''
             )
             self.assert_make_output(
-                subprocess.check_output(['make', 'help', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'help', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 echo 'usage: make [changelog|clean|commit|cover|doc|gh-pages|lint|publish|superclean|test]'
 '''
@@ -82,7 +82,7 @@ echo 'usage: make [changelog|clean|commit|cover|doc|gh-pages|lint|publish|superc
         ])
         with test_files as test_dir:
             self.assert_make_output(
-                subprocess.check_output(['make', 'clean', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'clean', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 rm -rf build node_modules package-lock.json
 '''
@@ -95,7 +95,7 @@ rm -rf build node_modules package-lock.json
         ])
         with test_files as test_dir:
             self.assert_make_output(
-                subprocess.check_output(['make', 'superclean', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'superclean', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 rm -rf build node_modules package-lock.json
 docker rmi -f node:16-slim python:3
@@ -109,7 +109,7 @@ docker rmi -f node:16-slim python:3
         ])
         with test_files as test_dir:
             self.assert_make_output(
-                subprocess.check_output(['make', 'commit', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'commit', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
@@ -136,7 +136,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 
             # Check subsequent make test commands
             self.assert_make_output(
-                subprocess.check_output(['make', 'commit', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'commit', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src
@@ -164,7 +164,7 @@ JSDOC_ARGS = --bogus-jsdoc-arg
         ])
         with test_files as test_dir:
             self.assert_make_output(
-                subprocess.check_output(['make', 'commit', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'commit', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
@@ -191,7 +191,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 
             # Check subsequent make test commands
             self.assert_make_output(
-                subprocess.check_output(['make', 'commit', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'commit', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v --bogus-ava-arg 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint --bogus-eslint-arg -c .eslintrc.cjs -f unix .eslintrc.cjs src
@@ -209,7 +209,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
         ])
         with test_files as test_dir:
             self.assert_make_output(
-                subprocess.check_output(['make', 'commit', 'NO_DOCKER=1', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'commit', 'NO_DOCKER=1', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 npm install --save-exact --save-dev \\
 \tava@'X.X.X' \\
@@ -235,7 +235,7 @@ npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/cov
 
             # Check subsequent make test commands
             self.assert_make_output(
-                subprocess.check_output(['make', 'commit', 'NO_DOCKER=1', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'commit', 'NO_DOCKER=1', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 npx ava -v 'src/tests/**/*.js'
 npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src
@@ -253,7 +253,7 @@ npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/cov
         ])
         with test_files as test_dir:
             self.assert_make_output(
-                subprocess.check_output(['make', 'test', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'test', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
@@ -275,7 +275,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 
             # Check subsequent make test commands
             self.assert_make_output(
-                subprocess.check_output(['make', 'test', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'test', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 '''
@@ -288,7 +288,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
         ])
         with test_files as test_dir:
             self.assert_make_output(
-                subprocess.check_output(['make', 'cover', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'cover', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
@@ -312,7 +312,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 
             # Check subsequent make test commands
             self.assert_make_output(
-                subprocess.check_output(['make', 'cover', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'cover', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
@@ -327,7 +327,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
         ])
         with test_files as test_dir:
             self.assert_make_output(
-                subprocess.check_output(['make', 'lint', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'lint', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
@@ -349,7 +349,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 
             # Check subsequent make test commands
             self.assert_make_output(
-                subprocess.check_output(['make', 'lint', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'lint', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src
 '''
@@ -362,7 +362,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
         ])
         with test_files as test_dir:
             self.assert_make_output(
-                subprocess.check_output(['make', 'doc', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'doc', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
@@ -384,7 +384,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 
             # Check subsequent make test commands
             self.assert_make_output(
-                subprocess.check_output(['make', 'doc', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'doc', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -c jsdoc.json src -d build/doc
 '''
@@ -398,7 +398,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
             (['src', 'tests', 'testMyPackage.js'], '')
         ])
         with test_files as test_dir:
-            output = subprocess.check_output(['make', 'gh-pages', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8')
+            output = subprocess.check_output(['make', 'gh-pages', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8')
             output = re.sub(r'/tmp[^\s]+?\.gh-pages', '/tmp.gh-pages', output, flags=re.MULTILINE)
             self.assert_make_output(
                 output,
@@ -431,7 +431,7 @@ touch ../tmp.gh-pages/.nojekyll
             Path(os.path.join(test_dir, 'build', 'npm.build')).touch()
 
             # Check subsequent make test commands
-            output = subprocess.check_output(['make', 'gh-pages', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8')
+            output = subprocess.check_output(['make', 'gh-pages', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8')
             output = re.sub(r'/tmp[^\s]+?\.gh-pages', '/tmp.gh-pages', output, flags=re.MULTILINE)
             self.assert_make_output(
                 output,
@@ -462,7 +462,7 @@ include Makefile.base
         ])
         with test_files as test_dir:
             self.assert_make_output(
-                subprocess.check_output(['make', 'gh-pages', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'gh-pages', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 make: Nothing to be done for 'gh-pages'.
 '''
@@ -475,7 +475,7 @@ make: Nothing to be done for 'gh-pages'.
         ])
         with test_files as test_dir:
             self.assert_make_output(
-                subprocess.check_output(['make', 'publish', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'publish', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
@@ -497,7 +497,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 
             # Check subsequent make test commands
             self.assert_make_output(
-                subprocess.check_output(['make', 'publish', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'publish', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm login && docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm publish && docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm logout
 '''
@@ -510,7 +510,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
         ])
         with test_files as test_dir:
             self.assert_make_output(
-                subprocess.check_output(['make', 'changelog', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'changelog', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 if [ "$(docker images -q python:3)" = "" ]; then docker pull -q python:3; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` python:3 python3 -m venv build/venv-changelog
@@ -526,7 +526,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` python:3 build/ven
 
             # Check subsequent make test commands
             self.assert_make_output(
-                subprocess.check_output(['make', 'changelog', '-n'], cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                subprocess.check_output(['make', 'changelog', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` python:3 build/venv-changelog/bin/simple-git-changelog
 '''
