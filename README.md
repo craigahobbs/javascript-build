@@ -1,17 +1,5 @@
 # JavaScript Build
 
-## Contents
-
-- [Introduction](#introduction)
-- [Project Setup](#project-setup)
-- [Make Targets](#make-targets)
-- [Make Options](#make-options)
-- [Make Variables](#make-variables)
-- [Extending JavaScript Build](#extending-javascript-build)
-
-
-## Introduction
-
 **JavaScript Build** is a lightweight GNU Make-based build system for best-practice JavaScript
 package development. JavaScript Build performs the following functions:
 
@@ -22,6 +10,15 @@ package development. JavaScript Build performs the following functions:
 - Generate documentation using [jsdoc](https://www.npmjs.com/package/jsdoc)
 - Publish application or documentation to [GitHub Pages](https://pages.github.com/)
 - Publish the package to [npm](https://docs.npmjs.com/cli/v6/commands/npm-publish)
+
+
+## Contents
+
+- [Project Setup](#project-setup)
+- [Make Targets](#make-targets)
+- [Make Options](#make-options)
+- [Make Variables](#make-variables)
+- [Extending JavaScript Build](#extending-javascript-build)
 
 
 ## Project Setup
