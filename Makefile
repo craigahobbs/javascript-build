@@ -29,4 +29,4 @@ build/venv-lint.build:
 
 .PHONY: changelog
 changelog:
-	make -f Makefile.base changelog
+	make -f Makefile.base changelog NO_DOCKER=1
