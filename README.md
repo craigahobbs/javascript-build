@@ -63,13 +63,29 @@ Note that the makefile automatically downloads "Makefile.base", "jsdoc.json", "p
 ".eslintrc.cjs" from JavaScript Build. JavaScript Build continually updates its development
 dependencies to the latest stable versions.
 
+Here is a typical JavaScript Build project ".gitignore" file:
+
+```
+/build/
+/node_modules/
+/.eslintrc.cjs
+/Makefile.base
+/jsdoc.json
+/package-lock.json
+/package.json
+```
+
+Notice that "Makefile.base", ".eslintrc.csj", "jsdoc.json", and "package.json" are ignored because
+they are downloaded by the Makefile.
+
 
 ## Make Targets
 
-JavaScript Build exposes build commands as "phony" make targets. Make targets are executed as follows:
+JavaScript Build exposes build commands as "phony" make targets. For example, to run all pre-commit
+targets, use the `commit` target:
 
 ```
-make <target>
+make commit
 ```
 
 The following targets are available:
@@ -115,14 +131,14 @@ Delete all development artifacts and downloaded docker images.
 
 ### gh-pages
 
-Publish the application or documentation to GitHub Pages. The `gh-pages` target depends on the
-`commit` target. By default the "src" directory is published (excluding "tests").
+Publish the application or project documentation to GitHub Pages. It first executes the `clean` and
+`commit` targets to produce a clean build.
 
-The repository is git-cloned (or pulled) to the "../\<package-name>.gh-pages" directory, the
-"gh-pages" branch is checked-out, and the "GHPAGES_SRC" make variable is rsync-ed there. Afterward,
-review the changes, commit, and push to publish.
+The repository is then git-cloned (or pulled) to the "../\<repository-name>.gh-pages" directory, the
+"gh-pages" branch is checked-out, and the directories and files defined by the "GHPAGES_SRC" make
+variable are rsync-ed there. Afterward, review the changes, commit, and push to publish.
 
-To create a "gh-pages" branch in your repository, enter the following shell commands:
+To create a "gh-pages" branch, enter the following shell commands:
 
 ```
 git checkout --orphan gh-pages
@@ -155,10 +171,12 @@ make -j commit
 ## Make Variables
 
 JavaScript Build exposes several make variables that can be modified in your makefile following the
-base makefile include. For example, to publish the built documentation to GitHub Pages:
+base makefile include. For example, to change the Node image:
 
 ```
-GHPAGES_SRC := build/doc/
+include Makefile.base
+
+NODE_IMAGE := node:15
 ```
 
 The following variables are supported:
@@ -183,8 +201,24 @@ The following variables are supported:
 
 - `WINDOW_VERSION` - The [window](https://www.npmjs.com/package/window) package version.
 
+
+### Pre-Include Make Variables
+
+The following make variables must be defined prior to the inclusion of the base makefile. This is
+because they modify the make targets that JavaScript Build generates on include. For example, to
+override the gh-pages source directories and files:
+
+```
+GHPAGES_SRC := src/my-static-application/
+
+include Makefile.base
+```
+
 - `GHPAGES_SRC` - The gh-pages target's source directories and files. Directories must end with a
-  slash ("/"). Default all directories in the "src" directory, excluding the "tests" directory.
+  slash ("/"). Default is "build/doc/".
+
+
+### Other Make Variables
 
 - `NO_DOCKER` - Use the system node instead of docker. This is intended to be used from the command line:
 
@@ -204,8 +238,8 @@ commit:
 	@echo 'Build succeeded!'
 ```
 
-Add a target dependency when you want the new dependency to execute in parallel (for [parallel
-builds](#make-options)):
+Add a target dependency when you want the new dependency to execute in parallel (for
+[parallel builds](#make-options)):
 
 ```
 .PHONY: other-stuff

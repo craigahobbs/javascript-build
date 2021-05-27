@@ -23,10 +23,10 @@ JSDOC_VERSION ?= ~3.6
 WINDOW_VERSION ?= ~4.2
 
 # jsdoc
-JSDOC_ARGS ?= -c jsdoc.json src
+JSDOC_ARGS ?= -c jsdoc.json
 
 # gh-pages source paths
-GHPAGES_SRC ?= $(filter-out src/tests/,$(wildcard src/*/))
+GHPAGES_SRC ?= build/doc/
 
 build/npm.build:
 ifeq '$(NO_DOCKER)' ''
@@ -77,16 +77,16 @@ _cover: build/npm.build
 .PHONY: _lint lint
 lint: _lint
 _lint: build/npm.build
-	$(NODE_DOCKER) npx eslint$(if $(ESLINT_ARGS), $(ESLINT_ARGS)) -c .eslintrc.cjs -f unix .eslintrc.cjs src
+	$(NODE_DOCKER) npx eslint$(if $(ESLINT_ARGS), $(ESLINT_ARGS)) -c .eslintrc.cjs -f unix .eslintrc.cjs src/
 
 .PHONY: _doc doc
 doc: _doc
 _doc: build/npm.build
-	$(NODE_DOCKER) npx jsdoc --pedantic$(if $(JSDOC_ARGS), $(JSDOC_ARGS)) -d build/doc
+	$(NODE_DOCKER) npx jsdoc --pedantic --recurse$(if $(JSDOC_ARGS), $(JSDOC_ARGS)) -d build/doc/ src/
 
 .PHONY: _gh-pages gh-pages
 ifneq '$(GHPAGES_SRC)' ''
-gh-pages: _gh-pages
+gh-pages: _clean commit _gh-pages
 _gh-pages: commit
 	if [ ! -d ../$(notdir $(CURDIR)).gh-pages ]; then git clone -b gh-pages `git config --get remote.origin.url` ../$(notdir $(CURDIR)).gh-pages; fi
 	cd ../$(notdir $(CURDIR)).gh-pages && git pull
@@ -95,7 +95,7 @@ _gh-pages: commit
 endif
 
 .PHONY: _publish publish
-publish: _publish
+publish: _clean commit _publish
 _publish: build/npm.build
 	$(NODE_DOCKER) npm login && $(NODE_DOCKER) npm publish && $(NODE_DOCKER) npm logout
 
