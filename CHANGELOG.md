@@ -1,5 +1,7 @@
 ## 2021-05-27
 
+- [73675e6](https://github.com/craigahobbs/javascript-build/commit/73675e6) - better jsdoc defaults
+
 - [4bcdf61](https://github.com/craigahobbs/javascript-build/commit/4bcdf61) - GHPAGES_SRC is "build/doc/"
 
 ## 2021-05-16
