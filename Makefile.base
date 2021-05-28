@@ -82,7 +82,7 @@ _lint: build/npm.build
 .PHONY: _doc doc
 doc: _doc
 _doc: build/npm.build
-	$(NODE_DOCKER) npx jsdoc --pedantic -d build/doc/$(if $(JSDOC_ARGS), $(JSDOC_ARGS)) README.md $(filter-out src/tests/, $(wildcard src/*/))
+	$(NODE_DOCKER) npx jsdoc --pedantic -d build/doc/$(if $(JSDOC_ARGS), $(JSDOC_ARGS)) $(filter-out src/tests/, $(wildcard src/*/))
 
 .PHONY: _gh-pages gh-pages
 ifneq '$(GHPAGES_SRC)' ''

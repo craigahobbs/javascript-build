@@ -125,7 +125,7 @@ mkdir -p build/
 touch build/npm.build
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -142,7 +142,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
                 '''\
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -182,7 +182,7 @@ mkdir -p build/
 touch build/npm.build
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v --bogus-ava-arg 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint --bogus-eslint-arg -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ --bogus-jsdoc-arg README.md src/package/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ --bogus-jsdoc-arg src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 --bogus-c8-arg \\
 \tnpx ava -v --bogus-ava-arg 'src/tests/**/*.js'
@@ -199,7 +199,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
                 '''\
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v --bogus-ava-arg 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint --bogus-eslint-arg -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ --bogus-jsdoc-arg README.md src/package/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ --bogus-jsdoc-arg src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 --bogus-c8-arg \\
 \tnpx ava -v --bogus-ava-arg 'src/tests/**/*.js'
@@ -228,7 +228,7 @@ mkdir -p build/
 touch build/npm.build
 npx ava -v 'src/tests/**/*.js'
 npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
+npx jsdoc --pedantic -d build/doc/ -c jsdoc.json src/package/
 npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -245,7 +245,7 @@ npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/cov
                 '''\
 npx ava -v 'src/tests/**/*.js'
 npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
+npx jsdoc --pedantic -d build/doc/ -c jsdoc.json src/package/
 npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -382,7 +382,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 \twindow@'X.X.X'
 mkdir -p build/
 touch build/npm.build
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json src/package/
 '''
             )
 
@@ -394,7 +394,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
             self.assert_make_output(
                 subprocess.check_output(['make', 'doc', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json src/package/
 '''
             )
 
@@ -424,7 +424,7 @@ mkdir -p build/
 touch build/npm.build
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -448,7 +448,7 @@ touch ../tmp.gh-pages/.nojekyll
 rm -rf build node_modules package-lock.json
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -502,7 +502,7 @@ mkdir -p build/
 touch build/npm.build
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -521,7 +521,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 rm -rf build node_modules package-lock.json
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
