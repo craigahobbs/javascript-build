@@ -105,7 +105,9 @@ docker rmi -f node:16-slim python:3
     def test_commit(self):
         test_files = create_test_files([
             ('Makefile', 'include Makefile.base'),
-            ('Makefile.base', MAKEFILE_BASE)
+            ('Makefile.base', MAKEFILE_BASE),
+            (['src', 'package', 'package.js'], ''),
+            (['src', 'tests', 'test.js'], '')
         ])
         with test_files as test_dir:
             self.assert_make_output(
@@ -123,7 +125,7 @@ mkdir -p build/
 touch build/npm.build
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic --recurse -c jsdoc.json -d build/doc/ src/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -140,7 +142,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
                 '''\
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic --recurse -c jsdoc.json -d build/doc/ src/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -160,7 +162,9 @@ ESLINT_ARGS = --bogus-eslint-arg
 JSDOC_ARGS = --bogus-jsdoc-arg
 '''
             ),
-            ('Makefile.base', MAKEFILE_BASE)
+            ('Makefile.base', MAKEFILE_BASE),
+            (['src', 'package', 'package.js'], ''),
+            (['src', 'tests', 'test.js'], '')
         ])
         with test_files as test_dir:
             self.assert_make_output(
@@ -178,7 +182,7 @@ mkdir -p build/
 touch build/npm.build
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v --bogus-ava-arg 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint --bogus-eslint-arg -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic --recurse --bogus-jsdoc-arg -d build/doc/ src/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ --bogus-jsdoc-arg README.md src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 --bogus-c8-arg \\
 \tnpx ava -v --bogus-ava-arg 'src/tests/**/*.js'
@@ -195,7 +199,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
                 '''\
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v --bogus-ava-arg 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint --bogus-eslint-arg -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic --recurse --bogus-jsdoc-arg -d build/doc/ src/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ --bogus-jsdoc-arg README.md src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 --bogus-c8-arg \\
 \tnpx ava -v --bogus-ava-arg 'src/tests/**/*.js'
@@ -205,7 +209,9 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
     def test_no_docker(self):
         test_files = create_test_files([
             ('Makefile', 'include Makefile.base'),
-            ('Makefile.base', MAKEFILE_BASE)
+            ('Makefile.base', MAKEFILE_BASE),
+            (['src', 'package', 'package.js'], ''),
+            (['src', 'tests', 'test.js'], '')
         ])
         with test_files as test_dir:
             self.assert_make_output(
@@ -222,7 +228,7 @@ mkdir -p build/
 touch build/npm.build
 npx ava -v 'src/tests/**/*.js'
 npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-npx jsdoc --pedantic --recurse -c jsdoc.json -d build/doc/ src/
+npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
 npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -239,7 +245,7 @@ npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/cov
                 '''\
 npx ava -v 'src/tests/**/*.js'
 npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-npx jsdoc --pedantic --recurse -c jsdoc.json -d build/doc/ src/
+npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
 npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -358,7 +364,9 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
     def test_doc(self):
         test_files = create_test_files([
             ('Makefile', 'include Makefile.base'),
-            ('Makefile.base', MAKEFILE_BASE)
+            ('Makefile.base', MAKEFILE_BASE),
+            (['src', 'package', 'package.js'], ''),
+            (['src', 'tests', 'test.js'], '')
         ])
         with test_files as test_dir:
             self.assert_make_output(
@@ -374,7 +382,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 \twindow@'X.X.X'
 mkdir -p build/
 touch build/npm.build
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic --recurse -c jsdoc.json -d build/doc/ src/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
 '''
             )
 
@@ -386,7 +394,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
             self.assert_make_output(
                 subprocess.check_output(['make', 'doc', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
                 '''\
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic --recurse -c jsdoc.json -d build/doc/ src/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
 '''
             )
 
@@ -394,7 +402,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
         test_files = create_test_files([
             ('Makefile', 'include Makefile.base'),
             ('Makefile.base', MAKEFILE_BASE),
-            (['src', 'my-package', 'myPackage.js'], ''),
+            (['src', 'package', 'myPackage.js'], ''),
             (['src', 'tests', 'testMyPackage.js'], '')
         ])
         with test_files as test_dir:
@@ -416,7 +424,7 @@ mkdir -p build/
 touch build/npm.build
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic --recurse -c jsdoc.json -d build/doc/ src/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -440,7 +448,7 @@ touch ../tmp.gh-pages/.nojekyll
 rm -rf build node_modules package-lock.json
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic --recurse -c jsdoc.json -d build/doc/ src/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -473,7 +481,9 @@ make: Nothing to be done for 'gh-pages'.
     def test_publish(self):
         test_files = create_test_files([
             ('Makefile', 'include Makefile.base'),
-            ('Makefile.base', MAKEFILE_BASE)
+            ('Makefile.base', MAKEFILE_BASE),
+            (['src', 'package', 'package.js'], ''),
+            (['src', 'tests', 'test.js'], '')
         ])
         with test_files as test_dir:
             self.assert_make_output(
@@ -492,7 +502,7 @@ mkdir -p build/
 touch build/npm.build
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic --recurse -c jsdoc.json -d build/doc/ src/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
@@ -511,7 +521,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 rm -rf build node_modules package-lock.json
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic --recurse -c jsdoc.json -d build/doc/ src/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md src/package/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \\
 \t--check-coverage --reporter html --reporter text --branches 100 --lines 100 \\
 \tnpx ava -v 'src/tests/**/*.js'
