@@ -1,6 +1,15 @@
 # Licensed under the MIT License
 # https://github.com/craigahobbs/javascript-build/blob/main/LICENSE
 
+# Download Python Build's pylintrc (for unit test static analysis)
+define WGET
+ifeq '$$(wildcard $(notdir $(1)))' ''
+$$(info Downloading $(notdir $(1)))
+_WGET := $$(shell if which wget; then wget -q $(1); else curl -Os $(1); fi)
+endif
+endef
+$(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/python-build/main/pylintrc))
+
 PYLINT_VERSION ?= 2.8.*
 
 .PHONY: help
@@ -12,7 +21,7 @@ commit: test lint
 
 .PHONY: clean
 clean:
-	rm -rf build __pycache__
+	rm -rf build pylintrc __pycache__
 
 .PHONY: test
 test:
