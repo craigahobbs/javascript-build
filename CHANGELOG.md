@@ -1,3 +1,7 @@
+## 2021-06-06
+
+- [766bcd4](https://github.com/craigahobbs/javascript-build/commit/766bcd4) - eslint 7.28
+
 ## 2021-05-27
 
 - [73675e6](https://github.com/craigahobbs/javascript-build/commit/73675e6) - better jsdoc defaults
