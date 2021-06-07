@@ -14,7 +14,7 @@ PYLINT_VERSION ?= 2.8.*
 
 .PHONY: help
 help:
-	@echo 'usage: make [changelog|clean|commit|lint|test]'
+	@echo 'usage: make [changelog|clean|commit|lint|superclean|test]'
 
 .PHONY: commit
 commit: test lint
@@ -22,6 +22,9 @@ commit: test lint
 .PHONY: clean
 clean:
 	rm -rf build pylintrc __pycache__
+
+.PHONY: superclean
+superclean: clean
 
 .PHONY: test
 test:
