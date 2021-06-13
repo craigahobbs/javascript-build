@@ -105,7 +105,9 @@ _changelog: build/venv-changelog.build
 	$(PYTHON_DOCKER) build/venv-changelog/bin/simple-git-changelog
 
 build/venv-changelog.build:
+ifeq '$(NO_DOCKER)' ''
 	if [ "$$(docker images -q $(PYTHON_IMAGE))" = "" ]; then docker pull -q $(PYTHON_IMAGE); fi
+endif
 	$(PYTHON_DOCKER) python3 -m venv build/venv-changelog
 	$(PYTHON_DOCKER) build/venv-changelog/bin/pip install -U pip setuptools wheel simple-git-changelog
 	touch $@

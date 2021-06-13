@@ -557,3 +557,31 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` python:3 build/ven
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` python:3 build/venv-changelog/bin/simple-git-changelog
 '''
             )
+
+    def test_changelog_no_docker(self):
+        test_files = create_test_files([
+            ('Makefile', 'include Makefile.base'),
+            ('Makefile.base', MAKEFILE_BASE)
+        ])
+        with test_files as test_dir:
+            self.assert_make_output(
+                subprocess.check_output(['make', 'changelog', 'NO_DOCKER=1', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                '''\
+python3 -m venv build/venv-changelog
+build/venv-changelog/bin/pip install -U pip setuptools wheel simple-git-changelog
+touch build/venv-changelog.build
+build/venv-changelog/bin/simple-git-changelog
+'''
+            )
+
+            # Touch the environment build sentinels
+            os.makedirs(os.path.join(test_dir, 'build'))
+            Path(os.path.join(test_dir, 'build', 'venv-changelog.build')).touch()
+
+            # Check subsequent make test commands
+            self.assert_make_output(
+                subprocess.check_output(['make', 'changelog', 'NO_DOCKER=1', '-n'], env={}, cwd=test_dir, stderr=subprocess.STDOUT, encoding='utf-8'),
+                '''\
+build/venv-changelog/bin/simple-git-changelog
+'''
+            )
