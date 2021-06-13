@@ -1,3 +1,7 @@
+## 2021-06-13
+
+- [8811c75](https://github.com/craigahobbs/javascript-build/commit/8811c75) - fix changelog with NO_DOCKER=1
+
 ## 2021-06-06
 
 - [766bcd4](https://github.com/craigahobbs/javascript-build/commit/766bcd4) - eslint 7.28
