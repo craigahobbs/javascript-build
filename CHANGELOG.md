@@ -1,3 +1,7 @@
+## 2021-06-17
+
+- [aa82329](https://github.com/craigahobbs/javascript-build/commit/aa82329) - cleanup commit dependencies
+
 ## 2021-06-13
 
 - [8811c75](https://github.com/craigahobbs/javascript-build/commit/8811c75) - fix changelog with NO_DOCKER=1
