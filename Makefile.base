@@ -86,7 +86,7 @@ _doc: build/npm.build
 
 .PHONY: _gh-pages gh-pages
 ifneq '$(GHPAGES_SRC)' ''
-gh-pages: _clean commit _gh-pages
+gh-pages: _clean _gh-pages
 _gh-pages: commit
 	if [ ! -d ../$(notdir $(CURDIR)).gh-pages ]; then git clone -b gh-pages `git config --get remote.origin.url` ../$(notdir $(CURDIR)).gh-pages; fi
 	cd ../$(notdir $(CURDIR)).gh-pages && git pull
@@ -95,8 +95,8 @@ _gh-pages: commit
 endif
 
 .PHONY: _publish publish
-publish: _clean commit _publish
-_publish: build/npm.build
+publish: _clean _publish
+_publish: commit
 	$(NODE_DOCKER) npm login && $(NODE_DOCKER) npm publish && $(NODE_DOCKER) npm logout
 
 .PHONY: _changelog changelog
