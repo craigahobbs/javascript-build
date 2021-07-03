@@ -1,3 +1,7 @@
+## 2021-07-03
+
+- [5713a68](https://github.com/craigahobbs/javascript-build/commit/5713a68) - remove browser-env and package.json
+
 ## 2021-06-17
 
 - [aa82329](https://github.com/craigahobbs/javascript-build/commit/aa82329) - cleanup commit dependencies
