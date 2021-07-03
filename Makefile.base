@@ -22,7 +22,7 @@ JSDOC_VERSION ?= ~3.6
 WINDOW_VERSION ?= ~4.2
 
 # jsdoc
-JSDOC_ARGS ?= -c jsdoc.json
+JSDOC_ARGS ?= -c jsdoc.json README.md
 
 # gh-pages source paths
 GHPAGES_SRC ?= build/doc/
