@@ -1,5 +1,7 @@
 ## 2021-07-03
 
+- [0fb065d](https://github.com/craigahobbs/javascript-build/commit/0fb065d) - add README.md to default JSDOC_ARGS
+
 - [5713a68](https://github.com/craigahobbs/javascript-build/commit/5713a68) - remove browser-env and package.json
 
 ## 2021-06-17
