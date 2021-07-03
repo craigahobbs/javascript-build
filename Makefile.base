@@ -16,7 +16,6 @@ PYTHON_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pw
 
 # Develpment dependencies
 AVA_VERSION ?= 4.0.0-alpha.2
-BROWSER_ENV_VERSION ?= ~3.3
 C8_VERSION ?= ~7.7
 ESLINT_VERSION ?= ~7.28
 JSDOC_VERSION ?= ~3.6
@@ -34,7 +33,6 @@ ifeq '$(NO_DOCKER)' ''
 endif
 	$(NODE_DOCKER) npm install --save-exact --save-dev \
 		ava@'$(AVA_VERSION)' \
-		browser-env@'$(BROWSER_ENV_VERSION)' \
 		c8@'$(C8_VERSION)' \
 		eslint@'$(ESLINT_VERSION)' \
 		jsdoc@'$(JSDOC_VERSION)' \

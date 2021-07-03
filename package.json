@@ -1,6 +1,0 @@
-{
-    "type": "module",
-    "scripts": {
-        "test": "ava 'src/tests/**/*.js'"
-    }
-}

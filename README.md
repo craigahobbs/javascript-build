@@ -49,19 +49,18 @@ endif
 endef
 $(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-build/main/Makefile.base))
 $(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-build/main/jsdoc.json))
-$(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-build/main/package.json))
 $(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-build/main/.eslintrc.cjs))
 
 # Include JavaScript Build
 include Makefile.base
 
 clean:
-	rm -rf Makefile.base jsdoc.json package.json .eslintrc.cjs
+	rm -rf Makefile.base jsdoc.json .eslintrc.cjs
 ```
 
-Note that the makefile automatically downloads "Makefile.base", "jsdoc.json", "package.json", and
-".eslintrc.cjs" from JavaScript Build. JavaScript Build continually updates its development
-dependencies to the latest stable versions.
+Note that the makefile automatically downloads "Makefile.base", "jsdoc.json", and ".eslintrc.cjs"
+from JavaScript Build. JavaScript Build continually updates its development dependencies to the
+latest stable versions.
 
 Here is a typical JavaScript Build project ".gitignore" file:
 
@@ -72,10 +71,9 @@ Here is a typical JavaScript Build project ".gitignore" file:
 /Makefile.base
 /jsdoc.json
 /package-lock.json
-/package.json
 ```
 
-Notice that "Makefile.base", ".eslintrc.csj", "jsdoc.json", and "package.json" are ignored because
+Notice that "Makefile.base", ".eslintrc.csj", "jsdoc.json", and are ignored because
 they are downloaded by the Makefile.
 
 

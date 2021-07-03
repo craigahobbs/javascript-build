@@ -116,7 +116,6 @@ docker rmi -f node:16-slim python:3
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
 \tava@'X.X.X' \\
-\tbrowser-env@'X.X.X' \\
 \tc8@'X.X.X' \\
 \teslint@'X.X.X' \\
 \tjsdoc@'X.X.X' \\
@@ -173,7 +172,6 @@ JSDOC_ARGS = --bogus-jsdoc-arg
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
 \tava@'X.X.X' \\
-\tbrowser-env@'X.X.X' \\
 \tc8@'X.X.X' \\
 \teslint@'X.X.X' \\
 \tjsdoc@'X.X.X' \\
@@ -219,7 +217,6 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
                 '''\
 npm install --save-exact --save-dev \\
 \tava@'X.X.X' \\
-\tbrowser-env@'X.X.X' \\
 \tc8@'X.X.X' \\
 \teslint@'X.X.X' \\
 \tjsdoc@'X.X.X' \\
@@ -264,7 +261,6 @@ npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/cov
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
 \tava@'X.X.X' \\
-\tbrowser-env@'X.X.X' \\
 \tc8@'X.X.X' \\
 \teslint@'X.X.X' \\
 \tjsdoc@'X.X.X' \\
@@ -299,7 +295,6 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
 \tava@'X.X.X' \\
-\tbrowser-env@'X.X.X' \\
 \tc8@'X.X.X' \\
 \teslint@'X.X.X' \\
 \tjsdoc@'X.X.X' \\
@@ -338,7 +333,6 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
 \tava@'X.X.X' \\
-\tbrowser-env@'X.X.X' \\
 \tc8@'X.X.X' \\
 \teslint@'X.X.X' \\
 \tjsdoc@'X.X.X' \\
@@ -375,7 +369,6 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
 \tava@'X.X.X' \\
-\tbrowser-env@'X.X.X' \\
 \tc8@'X.X.X' \\
 \teslint@'X.X.X' \\
 \tjsdoc@'X.X.X' \\
@@ -415,7 +408,6 @@ rm -rf build node_modules package-lock.json
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
 \tava@'X.X.X' \\
-\tbrowser-env@'X.X.X' \\
 \tc8@'X.X.X' \\
 \teslint@'X.X.X' \\
 \tjsdoc@'X.X.X' \\
@@ -493,7 +485,6 @@ rm -rf build node_modules package-lock.json
 if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \\
 \tava@'X.X.X' \\
-\tbrowser-env@'X.X.X' \\
 \tc8@'X.X.X' \\
 \teslint@'X.X.X' \\
 \tjsdoc@'X.X.X' \\
