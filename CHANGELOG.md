@@ -1,3 +1,7 @@
+## 2021-07-04
+
+- [42bad0d](https://github.com/craigahobbs/javascript-build/commit/42bad0d) - eslint 7.30
+
 ## 2021-07-03
 
 - [0fb065d](https://github.com/craigahobbs/javascript-build/commit/0fb065d) - add README.md to default JSDOC_ARGS
