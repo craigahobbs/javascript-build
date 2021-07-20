@@ -1,3 +1,7 @@
+## 2021-07-20
+
+- [bd912e5](https://github.com/craigahobbs/javascript-build/commit/bd912e5) - expose wget command function
+
 ## 2021-07-04
 
 - [42bad0d](https://github.com/craigahobbs/javascript-build/commit/42bad0d) - eslint 7.30
