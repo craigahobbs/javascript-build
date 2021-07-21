@@ -40,7 +40,7 @@ The basic structure of a JavaScript Build project is as follows:
 The basic JavaScript Build "Makefile" is as follows:
 
 ``` make
-# Download JavaSript Build
+# Download JavaScript Build
 define WGET
 ifeq '$$(wildcard $(notdir $(1)))' ''
 $$(info Downloading $(notdir $(1)))
