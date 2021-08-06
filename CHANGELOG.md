@@ -1,3 +1,7 @@
+## 2021-08-06
+
+- [ea75520](https://github.com/craigahobbs/javascript-build/commit/ea75520) - don't clean prior to gh-pages or publish
+
 ## 2021-07-25
 
 - [5d0e493](https://github.com/craigahobbs/javascript-build/commit/5d0e493) - eslint 7.31
