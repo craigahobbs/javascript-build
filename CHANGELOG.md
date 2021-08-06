@@ -1,5 +1,7 @@
 ## 2021-08-06
 
+- [4a37eb8](https://github.com/craigahobbs/javascript-build/commit/4a37eb8) - ensure wget overwrites downloaded file
+
 - [ea75520](https://github.com/craigahobbs/javascript-build/commit/ea75520) - don't clean prior to gh-pages or publish
 
 ## 2021-07-25
