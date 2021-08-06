@@ -6,6 +6,7 @@
 
 .DEFAULT_GOAL := help
 
+
 # Node
 NODE_IMAGE ?= node:16-slim
 NODE_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build $(NODE_IMAGE))
@@ -27,6 +28,7 @@ JSDOC_ARGS ?= -c jsdoc.json README.md
 # gh-pages source paths
 GHPAGES_SRC ?= build/doc/
 
+
 build/npm.build:
 ifeq '$(NO_DOCKER)' ''
 	if [ "$$(docker images -q $(NODE_IMAGE))" = "" ]; then docker pull -q $(NODE_IMAGE); fi
@@ -40,15 +42,18 @@ endif
 	mkdir -p $(dir $@)
 	touch $@
 
+
 .PHONY: _help help
 help: _help
 _help:
 	@echo 'usage: make [changelog|clean|commit|cover|doc|gh-pages|lint|publish|superclean|test]'
 
+
 .PHONY: _clean clean
 clean: _clean
 _clean:
 	rm -rf build node_modules package-lock.json
+
 
 .PHONY: _superclean superclean
 superclean: _superclean
@@ -57,13 +62,16 @@ ifeq '$(NO_DOCKER)' ''
 	-docker rmi -f $(NODE_IMAGE) $(PYTHON_IMAGE)
 endif
 
+
 .PHONY: commit
 commit: test lint doc cover
+
 
 .PHONY: _test test
 test: _test
 _test: build/npm.build
 	$(NODE_DOCKER) npx ava -v$(if $(TEST), --match '$(TEST)')$(if $(AVA_ARGS), $(AVA_ARGS)) 'src/tests/**/*.js'
+
 
 .PHONY: _cover cover
 cover: _cover
@@ -72,19 +80,22 @@ _cover: build/npm.build
 		--check-coverage --reporter html --reporter text --branches 100 --lines 100$(if $(C8_ARGS), $(C8_ARGS)) \
 		npx ava -v$(if $(TEST), --match '$(TEST)')$(if $(AVA_ARGS), $(AVA_ARGS)) 'src/tests/**/*.js'
 
+
 .PHONY: _lint lint
 lint: _lint
 _lint: build/npm.build
 	$(NODE_DOCKER) npx eslint$(if $(ESLINT_ARGS), $(ESLINT_ARGS)) -c .eslintrc.cjs -f unix .eslintrc.cjs src/
+
 
 .PHONY: _doc doc
 doc: _doc
 _doc: build/npm.build
 	$(NODE_DOCKER) npx jsdoc --pedantic -d build/doc/$(if $(JSDOC_ARGS), $(JSDOC_ARGS)) $(filter-out src/tests/, $(wildcard src/*/))
 
+
 .PHONY: _gh-pages gh-pages
 ifneq '$(GHPAGES_SRC)' ''
-gh-pages: _clean _gh-pages
+gh-pages: _gh-pages
 _gh-pages: commit
 	if [ ! -d ../$(notdir $(CURDIR)).gh-pages ]; then git clone -b gh-pages `git config --get remote.origin.url` ../$(notdir $(CURDIR)).gh-pages; fi
 	cd ../$(notdir $(CURDIR)).gh-pages && git pull
@@ -92,10 +103,12 @@ _gh-pages: commit
 	touch ../$(notdir $(CURDIR)).gh-pages/.nojekyll
 endif
 
+
 .PHONY: _publish publish
-publish: _clean _publish
+publish: _publish
 _publish: commit
 	$(NODE_DOCKER) npm login && $(NODE_DOCKER) npm publish && $(NODE_DOCKER) npm logout
+
 
 .PHONY: _changelog changelog
 changelog: _changelog
