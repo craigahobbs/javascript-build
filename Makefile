@@ -50,7 +50,6 @@ changelog: build/venv.build
 
 build/venv.build:
 	python3 -m venv build/venv
-	build/venv/bin/pip --disable-pip-version-check --no-cache-dir install --progress-bar off -U pip setuptools wheel
-	build/venv/bin/pip --disable-pip-version-check --no-cache-dir install --progress-bar off \
-		pylint=="$(PYLINT_VERSION)" simple-git-changelog
+	build/venv/bin/pip -q install --progress-bar off -U pip setuptools wheel
+	build/venv/bin/pip -q install --progress-bar off pylint=="$(PYLINT_VERSION)" simple-git-changelog
 	touch $@
