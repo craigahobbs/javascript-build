@@ -1,3 +1,7 @@
+## 2021-08-23
+
+- [7018053](https://github.com/craigahobbs/javascript-build/commit/7018053) - improve continued command lines
+
 ## 2021-08-06
 
 - [4a37eb8](https://github.com/craigahobbs/javascript-build/commit/4a37eb8) - ensure wget overwrites downloaded file
