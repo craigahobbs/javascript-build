@@ -31,7 +31,7 @@ define TEST_RULE
 test-$(strip $(1)):
 	mkdir -p test-actual/
 	($(MAKE) -C tests/$(strip $(1))/ -n --no-print-directory$(if $(strip $(2)), $(strip $(2)))) \
-		| sed -E "s/^(make\[.*: Nothing to be done for )\`/\1'/" \
+		| sed -E "s/^(make\[)[0-9]+(\].*: Nothing to be done for )[\`']/\1X\2'/" \
 		> test-actual/$(strip $(1)).txt
 	diff test-actual/$(strip $(1)).txt test-expected/$(strip $(1)).txt
 	rm test-actual/$(strip $(1)).txt
