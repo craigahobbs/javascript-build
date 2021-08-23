@@ -34,11 +34,11 @@ ifeq '$(NO_DOCKER)' ''
 	if [ "$$(docker images -q $(NODE_IMAGE))" = "" ]; then docker pull -q $(NODE_IMAGE); fi
 endif
 	$(NODE_DOCKER) npm install --save-exact --save-dev \
-		ava@'$(AVA_VERSION)' \
-		c8@'$(C8_VERSION)' \
-		eslint@'$(ESLINT_VERSION)' \
-		jsdoc@'$(JSDOC_VERSION)' \
-		window@'$(WINDOW_VERSION)'
+  ava@'$(AVA_VERSION)' \
+  c8@'$(C8_VERSION)' \
+  eslint@'$(ESLINT_VERSION)' \
+  jsdoc@'$(JSDOC_VERSION)' \
+  window@'$(WINDOW_VERSION)'
 	mkdir -p $(dir $@)
 	touch $@
 
@@ -77,8 +77,8 @@ _test: build/npm.build
 cover: _cover
 _cover: build/npm.build
 	$(NODE_DOCKER) npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \
-		--check-coverage --reporter html --reporter text --branches 100 --lines 100$(if $(C8_ARGS), $(C8_ARGS)) \
-		npx ava -v$(if $(TEST), --match '$(TEST)')$(if $(AVA_ARGS), $(AVA_ARGS)) 'src/tests/**/*.js'
+  --check-coverage --reporter html --reporter text --branches 100 --lines 100$(if $(C8_ARGS), $(C8_ARGS)) \
+  npx ava -v$(if $(TEST), --match '$(TEST)')$(if $(AVA_ARGS), $(AVA_ARGS)) 'src/tests/**/*.js'
 
 
 .PHONY: _lint lint

@@ -1,9 +1,9 @@
 npm install --save-exact --save-dev \
-		ava@'~X.Y' \
-		c8@'~X.Y' \
-		eslint@'~X.Y' \
-		jsdoc@'~X.Y' \
-		window@'~X.Y'
+  ava@'~X.Y' \
+  c8@'~X.Y' \
+  eslint@'~X.Y' \
+  jsdoc@'~X.Y' \
+  window@'~X.Y'
 mkdir -p build/
 touch build/npm.build
 npx ava -v 'src/tests/**/*.js'
