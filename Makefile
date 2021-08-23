@@ -2,31 +2,18 @@
 # https://github.com/craigahobbs/javascript-build/blob/main/LICENSE
 
 
-# Download Python Build's pylintrc (for unit test static analysis)
-define WGET
-ifeq '$$(wildcard $(notdir $(1)))' ''
-$$(info Downloading $(notdir $(1)))
-_WGET := $$(shell if which wget; then wget -q $(1); else curl -Os $(1); fi)
-endif
-endef
-$(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/python-build/main/pylintrc))
-
-
-PYLINT_VERSION ?= 2.9.*
-
-
 .PHONY: help
 help:
-	@echo 'usage: make [changelog|clean|commit|lint|superclean|test]'
+	@echo 'usage: make [changelog|clean|commit|superclean|test]'
 
 
 .PHONY: commit
-commit: test lint
+commit: test
 
 
 .PHONY: clean
 clean:
-	rm -rf __pycache__/ build/ pylintrc
+	rm -rf __pycache__/ build/
 
 
 .PHONY: superclean
@@ -35,12 +22,51 @@ superclean: clean
 
 .PHONY: test
 test:
-	python3 -m unittest -v tests.py
+	rm -rf test-actual/
 
 
-.PHONY: lint
-lint: build/venv.build
-	build/venv/bin/pylint tests.py
+# Test rule function - name, make args
+define TEST_RULE
+.PHONY: test-$(strip $(1))
+test-$(strip $(1)):
+	mkdir -p test-actual/
+	($(MAKE) -C tests/$(strip $(1))/ -n --no-print-directory$(if $(strip $(2)), $(strip $(2)))) \
+		| sed -E "s/^(make\[.*: Nothing to be done for )\`/\1'/" \
+		> test-actual/$(strip $(1)).txt
+	diff test-actual/$(strip $(1)).txt test-expected/$(strip $(1)).txt
+	rm test-actual/$(strip $(1)).txt
+
+test: test-$(strip $(1))
+endef
+
+
+# Un-export base makefile variables
+unexport NO_DOCKER
+
+
+# Tests
+$(eval $(call TEST_RULE, changelog, changelog))
+$(eval $(call TEST_RULE, changelog-2, changelog))
+$(eval $(call TEST_RULE, changelog-no-docker, changelog))
+$(eval $(call TEST_RULE, clean, clean))
+$(eval $(call TEST_RULE, commit, commit))
+$(eval $(call TEST_RULE, commit-2, commit))
+$(eval $(call TEST_RULE, cover, cover))
+$(eval $(call TEST_RULE, cover-2, cover))
+$(eval $(call TEST_RULE, doc, doc))
+$(eval $(call TEST_RULE, doc-2, doc))
+$(eval $(call TEST_RULE, gh-pages, gh-pages))
+$(eval $(call TEST_RULE, gh-pages-2, gh-pages))
+$(eval $(call TEST_RULE, help))
+$(eval $(call TEST_RULE, lint, lint))
+$(eval $(call TEST_RULE, lint-2, lint))
+$(eval $(call TEST_RULE, publish, publish))
+$(eval $(call TEST_RULE, publish-2, publish))
+$(eval $(call TEST_RULE, superclean, superclean))
+$(eval $(call TEST_RULE, test, test))
+$(eval $(call TEST_RULE, test-2, test))
+$(eval $(call TEST_RULE, test-no-docker, test NO_DOCKER=1))
+$(eval $(call TEST_RULE, test-no-docker-2, test NO_DOCKER=1))
 
 
 .PHONY: changelog
@@ -51,5 +77,5 @@ changelog: build/venv.build
 build/venv.build:
 	python3 -m venv build/venv
 	build/venv/bin/pip -q install --progress-bar off -U pip setuptools wheel
-	build/venv/bin/pip -q install --progress-bar off pylint=="$(PYLINT_VERSION)" simple-git-changelog
+	build/venv/bin/pip -q install --progress-bar off simple-git-changelog
 	touch $@

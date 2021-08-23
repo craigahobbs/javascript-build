@@ -1,0 +1,1 @@
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/

@@ -1,0 +1,16 @@
+if [ "$(docker images -q node:16-slim)" = "" ]; then docker pull -q node:16-slim; fi
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm install --save-exact --save-dev \
+		ava@'~X.Y' \
+		c8@'~X.Y' \
+		eslint@'~X.Y' \
+		jsdoc@'~X.Y' \
+		window@'~X.Y'
+mkdir -p build/
+touch build/npm.build
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx ava -v 'src/tests/**/*.js'
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs src/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md 
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \
+		--check-coverage --reporter html --reporter text --branches 100 --lines 100 \
+		npx ava -v 'src/tests/**/*.js'
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm login && docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm publish && docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npm logout
