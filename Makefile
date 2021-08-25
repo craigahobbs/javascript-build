@@ -13,7 +13,7 @@ commit: test
 
 .PHONY: clean
 clean:
-	rm -rf __pycache__/ build/
+	rm -rf build/ test-actual/
 
 
 .PHONY: superclean
