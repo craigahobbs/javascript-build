@@ -23,12 +23,14 @@ superclean: clean
 .PHONY: test
 test:
 	rm -rf test-actual/
+	@echo Tests completed - all passed
 
 
 # Test rule function - name, make args
 define TEST_RULE
 .PHONY: test-$(strip $(1))
 test-$(strip $(1)):
+	@echo 'Testing "$(strip $(1))"...'
 	mkdir -p test-actual/
 	($(MAKE) -C tests/$(strip $(1))/ -n --no-print-directory$(if $(strip $(2)), $(strip $(2)))) \
 		| sed -E "s/^(make\[)[0-9]+(\].*: Nothing to be done for )[\`']/\1X\2'/" \
