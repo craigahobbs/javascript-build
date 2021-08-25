@@ -1,3 +1,13 @@
+## 2021-08-25
+
+- [4a39851](https://github.com/craigahobbs/javascript-build/commit/4a39851) - fix make clean
+
+- [a47f90b](https://github.com/craigahobbs/javascript-build/commit/a47f90b) - add makefile test reports
+
+- [39cea09](https://github.com/craigahobbs/javascript-build/commit/39cea09) - fix bulk-testing
+
+- [b6a8d5b](https://github.com/craigahobbs/javascript-build/commit/b6a8d5b) - update changelog
+
 ## 2021-08-23
 
 - [7018053](https://github.com/craigahobbs/javascript-build/commit/7018053) - improve continued command lines
