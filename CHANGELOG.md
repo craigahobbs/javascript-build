@@ -1,3 +1,11 @@
+## 2021-08-26
+
+- [9ba83f6](https://github.com/craigahobbs/javascript-build/commit/9ba83f6) - c8 7.8, eslint 7.32
+
+- [1ab256b](https://github.com/craigahobbs/javascript-build/commit/1ab256b) - update readme
+
+- [1b8935b](https://github.com/craigahobbs/javascript-build/commit/1b8935b) - rename to javascript-build
+
 ## 2021-08-23
 
 - [7018053](https://github.com/craigahobbs/javascript-build/commit/7018053) - improve continued command lines
