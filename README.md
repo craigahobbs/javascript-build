@@ -1,14 +1,14 @@
-# JavaScript Build
+# javascript-build
 
-**JavaScript Build** is a lightweight GNU Make-based build system for best-practice JavaScript
-package development. JavaScript Build performs the following functions:
+**javascript-build** is a lightweight GNU Make-based build system for best-practice JavaScript
+package development. It performs the following functions:
 
-- Use the [official Docker Node image](https://hub.docker.com/_/node) to run tests, etc.
-- Run unit tests with [AVA](https://www.npmjs.com/package/ava)
-- Determine unit test coverage using [c8](https://www.npmjs.com/package/c8)
+- Run unit tests with [AVA](https://www.npmjs.com/package/ava) on the official [Docker Node image](https://hub.docker.com/_/node)
+- Verify unit test coverage using [c8](https://www.npmjs.com/package/c8)
 - Perform static code analysis using [eslint](https://www.npmjs.com/package/eslint)
 - Generate documentation using [jsdoc](https://www.npmjs.com/package/jsdoc)
 - Publish application or documentation to [GitHub Pages](https://pages.github.com/)
+- Create and update a changelog file using [simple-git-changelog](https://pypi.org/project/simple-git-changelog/)
 - Publish the package to [npm](https://docs.npmjs.com/cli/v6/commands/npm-publish)
 
 
@@ -18,12 +18,12 @@ package development. JavaScript Build performs the following functions:
 - [Make Targets](#make-targets)
 - [Make Options](#make-options)
 - [Make Variables](#make-variables)
-- [Extending JavaScript Build](#extending-javascript-build)
+- [Extending javascript-build](#extending-javascript-build)
 
 
 ## Project Setup
 
-The basic structure of a JavaScript Build project is as follows:
+The basic structure of a javascript-build project is as follows:
 
 ```
 .
@@ -37,10 +37,10 @@ The basic structure of a JavaScript Build project is as follows:
         `-- testPackageName.js
 ```
 
-The basic JavaScript Build "Makefile" is as follows:
+The basic javascript-build "Makefile" is as follows:
 
 ``` make
-# Download JavaScript Build
+# Download javascript-build
 define WGET
 ifeq '$$(wildcard $(notdir $(1)))' ''
 $$(info Downloading $(notdir $(1)))
@@ -52,7 +52,7 @@ $(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-bui
 $(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-build/main/jsdoc.json))
 $(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-build/main/.eslintrc.cjs))
 
-# Include JavaScript Build
+# Include javascript-build
 include Makefile.base
 
 clean:
@@ -60,10 +60,10 @@ clean:
 ```
 
 Note that the makefile automatically downloads "Makefile.base", "jsdoc.json", and ".eslintrc.cjs"
-from JavaScript Build. JavaScript Build continually updates its development dependencies to the
+from javascript-build. It continually updates its development dependencies to the
 latest stable versions.
 
-Here is a typical JavaScript Build project ".gitignore" file:
+Here is a typical javascript-build project ".gitignore" file:
 
 ```
 /build/
@@ -80,7 +80,7 @@ they are downloaded by the Makefile.
 
 ## Make Targets
 
-JavaScript Build exposes build commands as "phony" make targets. For example, to run all pre-commit
+javascript-build exposes build commands as "phony" make targets. For example, to run all pre-commit
 targets, use the `commit` target:
 
 ```
@@ -128,6 +128,14 @@ Delete all development artifacts.
 
 Delete all development artifacts and downloaded docker images.
 
+### changelog
+
+Create and update the project's changelog file.
+
+### publish
+
+Publish the package to npm.
+
 ### gh-pages
 
 Publish the application or project documentation to GitHub Pages. It first executes the `clean` and
@@ -145,10 +153,6 @@ git reset --hard
 git commit --allow-empty -m "initializing gh-pages branch"
 git push origin gh-pages
 ```
-
-### publish
-
-Publish the package to npm.
 
 
 ## Make Options
@@ -169,7 +173,7 @@ make -j commit
 
 ## Make Variables
 
-JavaScript Build exposes several make variables that can be modified in your makefile following the
+javascript-build exposes several make variables that can be modified in your makefile following the
 base makefile include. For example, to change the Node image:
 
 ```
@@ -204,7 +208,7 @@ The following variables are supported:
 ### Pre-Include Make Variables
 
 The following make variables must be defined prior to the inclusion of the base makefile. This is
-because they modify the make targets that JavaScript Build generates on include. For example, to
+because they modify the make targets that javascript-build generates on include. For example, to
 override the gh-pages source directories and files:
 
 ```
@@ -226,9 +230,9 @@ make commit NO_DOCKER=1
 ```
 
 
-## Extending JavaScript Build
+## Extending javascript-build
 
-All of the JavaScript Build [targets](#make-targets) may be extended either by adding additional
+All of the javascript-build [targets](#make-targets) may be extended either by adding additional
 commands or adding a target dependency. Add additional commands to execute when a target (and all
 its dependencies) is complete:
 
