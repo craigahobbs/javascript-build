@@ -3,7 +3,7 @@
 **javascript-build** is a lightweight GNU Make-based build system for best-practice JavaScript
 package development. It performs the following functions:
 
-- Run unit tests with [AVA](https://www.npmjs.com/package/ava) on the official [Docker Node image](https://hub.docker.com/_/node)
+- Run unit tests with [AVA](https://www.npmjs.com/package/ava) using the official [Docker Node image](https://hub.docker.com/_/node)
 - Verify unit test coverage using [c8](https://www.npmjs.com/package/c8)
 - Perform static code analysis using [eslint](https://www.npmjs.com/package/eslint)
 - Generate documentation using [jsdoc](https://www.npmjs.com/package/jsdoc)
