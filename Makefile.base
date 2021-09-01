@@ -2,7 +2,7 @@
 # Licensed under the MIT License
 # https://github.com/craigahobbs/javascript-build/blob/main/LICENSE
 
-# JavaScript Build - https://github.com/craigahobbs/javascript-build#readme
+# javascript-build - https://github.com/craigahobbs/javascript-build#readme
 
 .DEFAULT_GOAL := help
 
