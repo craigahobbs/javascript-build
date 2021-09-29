@@ -1,5 +1,7 @@
 ## 2021-09-29
 
+- [9e32376](https://github.com/craigahobbs/javascript-build/commit/9e32376) - use jsdom instead of window
+
 - [5a5a24a](https://github.com/craigahobbs/javascript-build/commit/5a5a24a) - c8 7.9
 
 ## 2021-08-26
