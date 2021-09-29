@@ -20,7 +20,7 @@ AVA_VERSION ?= 4.0.0-alpha.2
 C8_VERSION ?= ~7.9
 ESLINT_VERSION ?= ~7.32
 JSDOC_VERSION ?= ~3.6
-WINDOW_VERSION ?= ~4.2
+JSDOM_VERSION ?= ~14.1
 
 # jsdoc
 JSDOC_ARGS ?= -c jsdoc.json README.md
@@ -38,7 +38,7 @@ endif
   c8@'$(C8_VERSION)' \
   eslint@'$(ESLINT_VERSION)' \
   jsdoc@'$(JSDOC_VERSION)' \
-  window@'$(WINDOW_VERSION)'
+  jsdom@'$(JSDOM_VERSION)'
 	mkdir -p $(dir $@)
 	touch $@
 

@@ -202,7 +202,7 @@ The following variables are supported:
 
 - `JSDOC_ARGS` - The jsdoc tool's command line arguments. Default is "-c jsdoc.json src".
 
-- `WINDOW_VERSION` - The [window](https://www.npmjs.com/package/window) package version.
+- `JSDOM_VERSION` - The [jsdom](https://www.npmjs.com/package/jsdom) package version.
 
 
 ### Pre-Include Make Variables
