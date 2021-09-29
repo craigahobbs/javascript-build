@@ -1,3 +1,7 @@
+## 2021-09-29
+
+- [5a5a24a](https://github.com/craigahobbs/javascript-build/commit/5a5a24a) - c8 7.9
+
 ## 2021-08-26
 
 - [9ba83f6](https://github.com/craigahobbs/javascript-build/commit/9ba83f6) - c8 7.8, eslint 7.32
