@@ -4,7 +4,7 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
   c8@'~X.Y' \
   eslint@'~X.Y' \
   jsdoc@'~X.Y' \
-  window@'~X.Y'
+  jsdom@'~X.Y'
 mkdir -p build/
 touch build/npm.build
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \
