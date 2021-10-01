@@ -1,3 +1,7 @@
+## 2021-10-01
+
+- [8e949fc](https://github.com/craigahobbs/javascript-build/commit/8e949fc) - update build stub
+
 ## 2021-09-29
 
 - [9e32376](https://github.com/craigahobbs/javascript-build/commit/9e32376) - use jsdom instead of window
