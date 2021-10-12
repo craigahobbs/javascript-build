@@ -17,10 +17,10 @@ PYTHON_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pw
 
 # Develpment dependencies
 AVA_VERSION ?= 4.0.0-alpha.2
-C8_VERSION ?= ~7.9
-ESLINT_VERSION ?= ~7.32
+C8_VERSION ?= ~7.10
+ESLINT_VERSION ?= ~8.0
 JSDOC_VERSION ?= ~3.6
-JSDOM_VERSION ?= ~14.1
+JSDOM_VERSION ?= ~18.0
 
 # jsdoc
 JSDOC_ARGS ?= -c jsdoc.json README.md
