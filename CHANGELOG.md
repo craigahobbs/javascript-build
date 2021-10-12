@@ -1,3 +1,7 @@
+## 2021-10-12
+
+- [3b6b514](https://github.com/craigahobbs/javascript-build/commit/3b6b514) - c8 7.10, eslint 8.0, jsdom 18.0
+
 ## 2021-10-01
 
 - [8e949fc](https://github.com/craigahobbs/javascript-build/commit/8e949fc) - update build stub
