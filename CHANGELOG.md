@@ -1,3 +1,7 @@
+## 2021-10-19
+
+- [709882d](https://github.com/craigahobbs/javascript-build/commit/709882d) - remove npm install --save-exact argument
+
 ## 2021-10-12
 
 - [3b6b514](https://github.com/craigahobbs/javascript-build/commit/3b6b514) - c8 7.10, eslint 8.0, jsdom 18.0
