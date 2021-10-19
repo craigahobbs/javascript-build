@@ -1,4 +1,4 @@
-npm install --save-exact --save-dev \
+npm install --save-dev \
   ava@'~X.Y' \
   c8@'~X.Y' \
   eslint@'~X.Y' \
