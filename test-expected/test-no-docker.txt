@@ -6,4 +6,4 @@ npm install --save-dev \
   jsdom@'~X.Y'
 mkdir -p build/
 touch build/npm.build
-npx ava -v 'src/tests/**/*.js'
+npx ava -v src/tests/

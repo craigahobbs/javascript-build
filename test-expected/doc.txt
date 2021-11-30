@@ -7,4 +7,4 @@ docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/buil
   jsdom@'~X.Y'
 mkdir -p build/
 touch build/npm.build
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json README.md 
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:16-slim npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md src/

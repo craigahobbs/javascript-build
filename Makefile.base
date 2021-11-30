@@ -22,8 +22,17 @@ ESLINT_VERSION ?= ~8.3
 JSDOC_VERSION ?= ~3.6
 JSDOM_VERSION ?= ~18.1
 
+# Ava
+AVA_ARGS ?= src/tests/
+
+# C8
+C8_ARGS ?= --100 --allowExternal
+
+# ESLint
+ESLINT_ARGS ?= src/
+
 # jsdoc
-JSDOC_ARGS ?= -c jsdoc.json README.md
+JSDOC_ARGS ?= -c jsdoc.json -r README.md src/
 
 # gh-pages source paths
 GHPAGES_SRC ?= build/doc/
@@ -70,27 +79,26 @@ commit: test lint doc cover
 .PHONY: _test test
 test: _test
 _test: build/npm.build
-	$(NODE_DOCKER) npx ava -v$(if $(TEST), --match '$(TEST)')$(if $(AVA_ARGS), $(AVA_ARGS)) 'src/tests/**/*.js'
+	$(NODE_DOCKER) npx ava -v$(if $(TEST), --match '$(TEST)')$(if $(AVA_ARGS), $(AVA_ARGS))
 
 
 .PHONY: _cover cover
 cover: _cover
 _cover: build/npm.build
-	$(NODE_DOCKER) npx c8 --all --include 'src/**/*.js' --temp-dir build/tmp --report-dir build/coverage \
-  --check-coverage --reporter html --reporter text --branches 100 --lines 100$(if $(C8_ARGS), $(C8_ARGS)) \
-  npx ava -v$(if $(TEST), --match '$(TEST)')$(if $(AVA_ARGS), $(AVA_ARGS)) 'src/tests/**/*.js'
+	$(NODE_DOCKER) npx c8 -o build/coverage --temp-dir build/tmp -r html -r text$(if $(C8_ARGS), $(C8_ARGS)) \
+  npx ava -v$(if $(TEST), --match '$(TEST)')$(if $(AVA_ARGS), $(AVA_ARGS))
 
 
 .PHONY: _lint lint
 lint: _lint
 _lint: build/npm.build
-	$(NODE_DOCKER) npx eslint$(if $(ESLINT_ARGS), $(ESLINT_ARGS)) -c .eslintrc.cjs -f unix .eslintrc.cjs src/
+	$(NODE_DOCKER) npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs$(if $(ESLINT_ARGS), $(ESLINT_ARGS))
 
 
 .PHONY: _doc doc
 doc: _doc
 _doc: build/npm.build
-	$(NODE_DOCKER) npx jsdoc --pedantic -d build/doc/$(if $(JSDOC_ARGS), $(JSDOC_ARGS)) $(filter-out src/tests/, $(wildcard src/*/))
+	$(NODE_DOCKER) npx jsdoc --pedantic -d build/doc/$(if $(JSDOC_ARGS), $(JSDOC_ARGS))
 
 
 .PHONY: _gh-pages gh-pages
