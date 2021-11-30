@@ -1,3 +1,15 @@
+## 2021-11-30
+
+- [1b3ff73](https://github.com/craigahobbs/javascript-build/commit/1b3ff73) - allow override of source and test directories
+
+## 2021-11-22
+
+- [b5ae237](https://github.com/craigahobbs/javascript-build/commit/b5ae237) - eslint 8.3, jsdom 18.1
+
+## 2021-11-08
+
+- [a86e21b](https://github.com/craigahobbs/javascript-build/commit/a86e21b) - ava 4.0.0-rc.1, eslint 8.2
+
 ## 2021-10-19
 
 - [709882d](https://github.com/craigahobbs/javascript-build/commit/709882d) - remove npm install --save-exact argument
