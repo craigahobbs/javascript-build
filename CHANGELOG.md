@@ -1,3 +1,7 @@
+## 2021-12-02
+
+- [3f40993](https://github.com/craigahobbs/javascript-build/commit/3f40993) - default to lib and test
+
 ## 2021-11-30
 
 - [1b3ff73](https://github.com/craigahobbs/javascript-build/commit/1b3ff73) - allow override of source and test directories
