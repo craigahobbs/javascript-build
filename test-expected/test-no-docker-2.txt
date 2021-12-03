@@ -1,1 +1,1 @@
-npx ava -v src/tests/
+npx ava -v test/

@@ -23,16 +23,16 @@ JSDOC_VERSION ?= ~3.6
 JSDOM_VERSION ?= ~18.1
 
 # Ava
-AVA_ARGS ?= src/tests/
+AVA_ARGS ?= test/
 
 # C8
 C8_ARGS ?= --100 --allowExternal
 
 # ESLint
-ESLINT_ARGS ?= src/
+ESLINT_ARGS ?= lib/ test/
 
 # jsdoc
-JSDOC_ARGS ?= -c jsdoc.json -r README.md src/
+JSDOC_ARGS ?= -c jsdoc.json -r README.md lib/
 
 # gh-pages source paths
 GHPAGES_SRC ?= build/doc/
