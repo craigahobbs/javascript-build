@@ -1,3 +1,7 @@
+## 2021-12-03
+
+- [ca4c068](https://github.com/craigahobbs/javascript-build/commit/ca4c068) - improve c8 coverage
+
 ## 2021-12-02
 
 - [3f40993](https://github.com/craigahobbs/javascript-build/commit/3f40993) - default to lib and test
