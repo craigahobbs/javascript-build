@@ -191,7 +191,7 @@ The following variables are supported:
 
 - `C8_VERSION` - The [c8](https://www.npmjs.com/package/c8) package version.
 
-- `C8_ARGS` - The c8 tool's command line arguments. Default is "--100 --allowExternal".
+- `C8_ARGS` - The c8 tool's command line arguments. Default is "--100 --all --allowExternal --src lib/ --src test/".
 
 - `ESLINT_VERSION` - The [eslint](https://www.npmjs.com/package/eslint) package version.
 

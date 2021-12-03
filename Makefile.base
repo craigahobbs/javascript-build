@@ -26,7 +26,7 @@ JSDOM_VERSION ?= ~18.1
 AVA_ARGS ?= test/
 
 # C8
-C8_ARGS ?= --100 --allowExternal
+C8_ARGS ?= --100 --all --allowExternal --src lib/ --src test/
 
 # ESLint
 ESLINT_ARGS ?= lib/ test/
