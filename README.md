@@ -30,11 +30,10 @@ The basic structure of a javascript-build project is as follows:
 |-- .gitignore
 |-- Makefile
 |-- README.md
-`-- src
-    |-- package-name
-    |   |-- packageName.js
-    `-- tests
-        `-- testPackageName.js
+|-- lib
+|   `-- packageName.js
+`-- test
+    `-- testPackageName.js
 ```
 
 The basic javascript-build "Makefile" is as follows:
@@ -96,7 +95,7 @@ should be run prior to any commit.
 
 ### test
 
-Run the unit tests in the "src/tests" directory.
+Run the unit tests in the "test" directory.
 
 To run a single unit test, use the "TEST" make variable:
 
@@ -106,11 +105,11 @@ make test TEST='My Test'
 
 ### lint
 
-Run eslint on JavaScript source files under the "src" directory.
+Run eslint on JavaScript source files under the "lib" directory.
 
 ### doc
 
-Run jsdoc on JavaScript source files under the "src" directory. The HTML documentation index is
+Run jsdoc on JavaScript source files under the "lib" directory. The HTML documentation index is
 located at "build/doc/index.html".
 
 ### cover
@@ -188,19 +187,19 @@ The following variables are supported:
 
 - `AVA_VERSION` - The [AVA](https://www.npmjs.com/package/ava) package version.
 
-- `AVA_ARGS` - The AVA tool's command line arguments. Default is "".
+- `AVA_ARGS` - The AVA tool's command line arguments. Default is "test/".
 
 - `C8_VERSION` - The [c8](https://www.npmjs.com/package/c8) package version.
 
-- `C8_ARGS` - The c8 tool's command line arguments. Default is "".
+- `C8_ARGS` - The c8 tool's command line arguments. Default is "--100 --allowExternal".
 
 - `ESLINT_VERSION` - The [eslint](https://www.npmjs.com/package/eslint) package version.
 
-- `ESLINT_ARGS` - The eslint tool's command line arguments. Default is "".
+- `ESLINT_ARGS` - The eslint tool's command line arguments. Default is "lib/ test/".
 
 - `JSDOC_VERSION` - The [jsdoc](https://www.npmjs.com/package/jsdoc) package version.
 
-- `JSDOC_ARGS` - The jsdoc tool's command line arguments. Default is "-c jsdoc.json src".
+- `JSDOC_ARGS` - The jsdoc tool's command line arguments. Default is "-c jsdoc.json -r README.md lib/".
 
 - `JSDOM_VERSION` - The [jsdom](https://www.npmjs.com/package/jsdom) package version.
 
@@ -212,7 +211,7 @@ because they modify the make targets that javascript-build generates on include.
 override the gh-pages source directories and files:
 
 ```
-GHPAGES_SRC := src/my-static-application/
+GHPAGES_SRC := lib/my-static-application/
 
 include Makefile.base
 ```
