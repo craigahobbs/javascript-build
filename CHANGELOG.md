@@ -1,3 +1,7 @@
+## 2021-12-08
+
+- [020d3db](https://github.com/craigahobbs/javascript-build/commit/020d3db) - eslint 8.4, jsdom 19.0
+
 ## 2021-12-03
 
 - [ca4c068](https://github.com/craigahobbs/javascript-build/commit/ca4c068) - improve c8 coverage
