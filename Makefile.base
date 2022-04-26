@@ -8,7 +8,7 @@
 
 
 # Node
-NODE_IMAGE ?= node:16-slim
+NODE_IMAGE ?= node:18-slim
 NODE_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build $(NODE_IMAGE))
 
 # Python
@@ -16,9 +16,9 @@ PYTHON_IMAGE ?= python:3
 PYTHON_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` $(PYTHON_IMAGE))
 
 # Develpment dependencies
-AVA_VERSION ?= ~4.1
+AVA_VERSION ?= ~4.2
 C8_VERSION ?= ~7.11
-ESLINT_VERSION ?= ~8.12
+ESLINT_VERSION ?= ~8.14
 JSDOC_VERSION ?= ~3.6
 JSDOM_VERSION ?= ~19.0
 
