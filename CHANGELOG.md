@@ -1,3 +1,7 @@
+## 2022-06-13
+
+- [bcd8ef0](https://github.com/craigahobbs/javascript-build/commit/bcd8ef0) - ava 4.3, eslint 8.17
+
 ## 2022-04-26
 
 - [fd09270](https://github.com/craigahobbs/javascript-build/commit/fd09270) - node 18, ava 4.2, eslint 8.14
