@@ -1,3 +1,7 @@
+## 2022-07-03
+
+- [b2896ff](https://github.com/craigahobbs/javascript-build/commit/b2896ff) - eslint 8.19, jsdom 20.0
+
 ## 2022-06-13
 
 - [bcd8ef0](https://github.com/craigahobbs/javascript-build/commit/bcd8ef0) - ava 4.3, eslint 8.17
