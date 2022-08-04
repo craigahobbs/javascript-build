@@ -1,3 +1,7 @@
+## 2022-08-04
+
+- [333c11f](https://github.com/craigahobbs/javascript-build/commit/333c11f) - c8 7.12, eslint 8.21
+
 ## 2022-07-13
 
 - [3e9fec3](https://github.com/craigahobbs/javascript-build/commit/3e9fec3) - disable eslint lines-around-comment
