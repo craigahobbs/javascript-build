@@ -1,7 +1,7 @@
 # javascript-build
 
 **javascript-build** is a lightweight GNU Make-based build system for best-practice JavaScript
-package development. It performs the following functions:
+package development.
 
 - Uses the official [Docker Node image](https://hub.docker.com/_/node) (configurable)
 - Run unit tests with [AVA](https://www.npmjs.com/package/ava)
