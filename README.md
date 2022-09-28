@@ -19,6 +19,7 @@ package development. It performs the following functions:
 - [Make Options](#make-options)
 - [Make Variables](#make-variables)
 - [Extending javascript-build](#extending-javascript-build)
+- [Make Tips and Tricks](#make-tips-and-tricks)
 
 
 ## Project Setup
@@ -249,4 +250,39 @@ other-stuff:
     # do stuff...
 
 commit: other-stuff
+```
+
+
+## Make Tips and Tricks
+
+### Embed JavaScript in a Makefile
+
+JavaScript can be embedded in a makefile by first defining the JavaScript script, exporting the
+script, and executing the script with Node's "-e" argument. Make variables can even be incorporated
+into the JavaScript script. Here's an example:
+
+```
+TITLE := Hello, World!
+COUNT := 3
+
+define JAVASCRIPT_SCRIPT
+console.log('$(TITLE)');
+for (let x = 1; x < $(COUNT) + 1; x++) {
+    console.log(`x = $${x}`);
+}
+endef
+export JAVASCRIPT_SCRIPT
+
+.PHONY: javascript-script
+javascript-script:
+	node -e "$$JAVASCRIPT_SCRIPT"
+```
+
+Running make yields the following output:
+
+```
+Hello, World!
+x = 1
+x = 2
+x = 3
 ```
