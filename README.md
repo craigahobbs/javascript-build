@@ -275,7 +275,7 @@ export JAVASCRIPT_SCRIPT
 
 .PHONY: javascript-script
 javascript-script:
-	node -e "$$JAVASCRIPT_SCRIPT"
+	node --input-type=module -e "$$JAVASCRIPT_SCRIPT"
 ```
 
 Running make yields the following output:
