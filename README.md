@@ -26,7 +26,7 @@ package development. It performs the following functions:
 
 The basic structure of a javascript-build project is as follows:
 
-```
+~~~
 .
 |-- .gitignore
 |-- Makefile
@@ -35,11 +35,11 @@ The basic structure of a javascript-build project is as follows:
 |   `-- packageName.js
 `-- test
     `-- testPackageName.js
-```
+~~~
 
 The basic javascript-build "Makefile" is as follows:
 
-``` make
+~~~ make
 # Download javascript-build
 define WGET
 ifeq '$$(wildcard $(notdir $(1)))' ''
@@ -57,7 +57,7 @@ include Makefile.base
 
 clean:
 	rm -rf Makefile.base jsdoc.json .eslintrc.cjs
-```
+~~~
 
 Note that the makefile automatically downloads "Makefile.base", "jsdoc.json", and ".eslintrc.cjs"
 from javascript-build. It continually updates its development dependencies to the
@@ -65,14 +65,14 @@ latest stable versions.
 
 Here is a typical javascript-build project ".gitignore" file:
 
-```
+~~~
 /build/
 /node_modules/
 /.eslintrc.cjs
 /Makefile.base
 /jsdoc.json
 /package-lock.json
-```
+~~~
 
 Notice that "Makefile.base", ".eslintrc.csj", "jsdoc.json", and are ignored because
 they are downloaded by the Makefile.
@@ -83,9 +83,9 @@ they are downloaded by the Makefile.
 javascript-build exposes build commands as "phony" make targets. For example, to run all pre-commit
 targets, use the `commit` target:
 
-```
+~~~
 make commit
-```
+~~~
 
 The following targets are available:
 
@@ -100,9 +100,9 @@ Run the unit tests in the "test" directory.
 
 To run a single unit test, use the "TEST" make variable:
 
-```
+~~~
 make test TEST='My Test'
-```
+~~~
 
 ### lint
 
@@ -147,28 +147,28 @@ variable are rsync-ed there. Afterward, review the changes, commit, and push to 
 
 To create a "gh-pages" branch, enter the following shell commands:
 
-```
+~~~
 git checkout --orphan gh-pages
 git reset --hard
 git commit --allow-empty -m "initializing gh-pages branch"
 git push origin gh-pages
-```
+~~~
 
 
 ## Make Options
 
 To view the commands of any make target without executing, use the "-n" make argument:
 
-```
+~~~
 make -n test
-```
+~~~
 
 To run targets in parallel, use the "-j" make argument. This can significantly decrease the time of
 the [commit](#commit) target.
 
-```
+~~~
 make -j commit
-```
+~~~
 
 
 ## Make Variables
@@ -176,11 +176,11 @@ make -j commit
 javascript-build exposes several make variables that can be modified in your makefile following the
 base makefile include. For example, to change the Node image:
 
-```
+~~~ make
 include Makefile.base
 
 NODE_IMAGE := node:15
-```
+~~~
 
 The following variables are supported:
 
@@ -211,11 +211,11 @@ The following make variables must be defined prior to the inclusion of the base 
 because they modify the make targets that javascript-build generates on include. For example, to
 override the gh-pages source directories and files:
 
-```
+~~~ make
 GHPAGES_SRC := lib/my-static-application/
 
 include Makefile.base
-```
+~~~
 
 - `GHPAGES_SRC` - The gh-pages target's source directories and files. Directories must end with a
   slash ("/"). Default is "build/doc/".
@@ -225,9 +225,9 @@ include Makefile.base
 
 - `NO_DOCKER` - Use the system node instead of docker. This is intended to be used from the command line:
 
-```
+~~~
 make commit NO_DOCKER=1
-```
+~~~
 
 
 ## Extending javascript-build
@@ -236,21 +236,21 @@ All of the javascript-build [targets](#make-targets) may be extended either by a
 commands or adding a target dependency. Add additional commands to execute when a target (and all
 its dependencies) is complete:
 
-```
+~~~ make
 commit:
 	@echo 'Build succeeded!'
-```
+~~~
 
 Add a target dependency when you want the new dependency to execute in parallel (for
 [parallel builds](#make-options)):
 
-```
+~~~ make
 .PHONY: other-stuff
 other-stuff:
     # do stuff...
 
 commit: other-stuff
-```
+~~~
 
 
 ## Make Tips and Tricks
@@ -261,7 +261,7 @@ JavaScript can be embedded in a makefile by first defining the JavaScript script
 script, and executing the script with Node's "-e" argument. Make variables can even be incorporated
 into the JavaScript script. Here's an example:
 
-```
+~~~ make
 TITLE := Hello, World!
 COUNT := 3
 
@@ -276,13 +276,13 @@ export JAVASCRIPT_SCRIPT
 .PHONY: javascript-script
 javascript-script:
 	node --input-type=module -e "$$JAVASCRIPT_SCRIPT"
-```
+~~~
 
 Running make yields the following output:
 
-```
+~~~
 Hello, World!
 x = 1
 x = 2
 x = 3
-```
+~~~
