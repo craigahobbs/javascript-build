@@ -75,7 +75,7 @@ Here is a typical javascript-build project ".gitignore" file:
 /package-lock.json
 ~~~
 
-Notice that "Makefile.base", ".eslintrc.csj", "jsdoc.json", and are ignored because
+Notice that "Makefile.base", ".eslintrc.cjs", "jsdoc.json", and are ignored because
 they are downloaded by the Makefile.
 
 
