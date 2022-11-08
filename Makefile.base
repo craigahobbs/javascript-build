@@ -18,8 +18,8 @@ PYTHON_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pw
 # Develpment dependencies
 AVA_VERSION ?= ~5.0
 C8_VERSION ?= ~7.12
-ESLINT_VERSION ?= ~8.26
-JSDOC_VERSION ?= ~3.6
+ESLINT_VERSION ?= ~8.27
+JSDOC_VERSION ?= ~4.0
 JSDOM_VERSION ?= ~20.0
 
 # Ava
