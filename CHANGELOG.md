@@ -1,5 +1,13 @@
 # Changelog
 
+## 2022-11-08
+
+- [7e96a4d](https://github.com/craigahobbs/javascript-build/commit/7e96a4d) - eslint 8.27, jsdoc 4.0
+
+## 2022-10-31
+
+- [0857c9f](https://github.com/craigahobbs/javascript-build/commit/0857c9f) - ava 5.0, eslint 8.26
+
 ## 2022-09-28
 
 - [1e7b861](https://github.com/craigahobbs/javascript-build/commit/1e7b861) - eslint 8.24
