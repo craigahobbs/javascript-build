@@ -1,2 +1,2 @@
 rm -rf build node_modules package-lock.json
-docker rmi -f node:18-slim python:3
+docker rmi -f node:X python:3
