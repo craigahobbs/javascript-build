@@ -1,5 +1,11 @@
 # Changelog
 
+## 2023-01-01
+
+- [c5ad85d](https://github.com/craigahobbs/javascript-build/commit/c5ad85d) - use node:current-slim
+
+- [699b936](https://github.com/craigahobbs/javascript-build/commit/699b936) - eslint 8.31
+
 ## 2022-12-01
 
 - [fe357f4](https://github.com/craigahobbs/javascript-build/commit/fe357f4) - node 19, ava 5.1, eslint 8.28
