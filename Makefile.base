@@ -8,7 +8,7 @@
 
 
 # Node
-NODE_IMAGE ?= node:19-slim
+NODE_IMAGE ?= node:current-slim
 NODE_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build $(NODE_IMAGE))
 
 # Python
