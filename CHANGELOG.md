@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-01-27
+
+- [5fa5f21](https://github.com/craigahobbs/javascript-build/commit/5fa5f21) - eslint 8.32, jsdom 21.1
+
 ## 2023-01-01
 
 - [c5ad85d](https://github.com/craigahobbs/javascript-build/commit/c5ad85d) - use node:current-slim
