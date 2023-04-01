@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-04-01
+
+- [44d0d75](https://github.com/craigahobbs/javascript-build/commit/44d0d75) - eslint 8.37
+
 ## 2023-03-01
 
 - [6279510](https://github.com/craigahobbs/javascript-build/commit/6279510) - ava 5.2, c8 7.13, eslint 8.35
