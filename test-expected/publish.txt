@@ -1,5 +1,4 @@
 if [ "$(docker images -q node:X)" = "" ]; then docker pull -q node:X; fi
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X npm install -g npm@latest
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X npm install --save-dev \
   ava@'~X.Y' \
   c8@'~X.Y' \

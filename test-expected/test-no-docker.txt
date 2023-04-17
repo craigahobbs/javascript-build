@@ -1,4 +1,3 @@
-npm install -g npm@latest
 npm install --save-dev \
   ava@'~X.Y' \
   c8@'~X.Y' \

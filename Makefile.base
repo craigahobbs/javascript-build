@@ -42,7 +42,6 @@ build/npm.build:
 ifeq '$(NO_DOCKER)' ''
 	if [ "$$(docker images -q $(NODE_IMAGE))" = "" ]; then docker pull -q $(NODE_IMAGE); fi
 endif
-	$(NODE_DOCKER) npm install -g npm@latest
 	$(NODE_DOCKER) npm install --save-dev \
   ava@'$(AVA_VERSION)' \
   c8@'$(C8_VERSION)' \
