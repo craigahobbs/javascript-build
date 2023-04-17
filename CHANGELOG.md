@@ -2,11 +2,9 @@
 
 ## 2023-04-17
 
+- [2a4350a](https://github.com/craigahobbs/javascript-build/commit/2a4350a) - install latest npm
+
 - [a1ed687](https://github.com/craigahobbs/javascript-build/commit/a1ed687) - don't set HOME to control node_modules location anymore
-
-## 2023-04-17
-
-- [fb3ea17](https://github.com/craigahobbs/javascript-build/commit/fb3ea17) - create build directory prior to npm install
 
 ## 2023-04-01
 
