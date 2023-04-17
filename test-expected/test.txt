@@ -1,10 +1,10 @@
 if [ "$(docker images -q node:X)" = "" ]; then docker pull -q node:X; fi
 mkdir -p build/
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:X npm install --save-dev \
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X npm install --save-dev \
   ava@'~X.Y' \
   c8@'~X.Y' \
   eslint@'~X.Y' \
   jsdoc@'~X.Y' \
   jsdom@'~X.Y'
 touch build/npm.build
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:X npx ava -v test/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X npx ava -v test/
