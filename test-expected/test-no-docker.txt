@@ -1,9 +1,10 @@
-mkdir -p build/
+npm install -g npm@latest
 npm install --save-dev \
   ava@'~X.Y' \
   c8@'~X.Y' \
   eslint@'~X.Y' \
   jsdoc@'~X.Y' \
   jsdom@'~X.Y'
+mkdir -p build/
 touch build/npm.build
 npx ava -v test/
