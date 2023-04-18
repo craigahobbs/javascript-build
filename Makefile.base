@@ -123,6 +123,7 @@ changelog: _changelog
 _changelog: build/venv-changelog.build
 	$(PYTHON_DOCKER) build/venv-changelog/bin/simple-git-changelog
 
+
 build/venv-changelog.build:
 ifeq '$(NO_DOCKER)' ''
 	if [ "$$(docker images -q $(PYTHON_IMAGE))" = "" ]; then docker pull -q $(PYTHON_IMAGE); fi
