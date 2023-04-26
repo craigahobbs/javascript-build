@@ -4,8 +4,6 @@
 
 - [9ae1b54](https://github.com/craigahobbs/javascript-build/commit/9ae1b54) - eslint 8.39
 
-- [c473ec0](https://github.com/craigahobbs/javascript-build/commit/c473ec0) - add gh-pages target
-
 ## 2023-04-17
 
 - [a1ed687](https://github.com/craigahobbs/javascript-build/commit/a1ed687) - don't set HOME to control node_modules location anymore
