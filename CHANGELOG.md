@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-05-12
+
+- [fa3c180](https://github.com/craigahobbs/javascript-build/commit/fa3c180) - eslint 8.40, jsdom 22.0
+
 ## 2023-04-26
 
 - [9ae1b54](https://github.com/craigahobbs/javascript-build/commit/9ae1b54) - eslint 8.39
