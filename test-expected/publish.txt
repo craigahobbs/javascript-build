@@ -1,15 +1,14 @@
 if [ "$(docker images -q node:X)" = "" ]; then docker pull -q node:X; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X npm install --save-dev \
-  ava@'~X.Y' \
   c8@'~X.Y' \
   eslint@'~X.Y' \
   jsdoc@'~X.Y' \
   jsdom@'~X.Y'
 mkdir -p build/
 touch build/npm.build
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X npx ava -v test/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X node --test --test-reporter spec test/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs lib/ test/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md lib/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X npx c8 -o build/coverage --temp-dir build/tmp -r html -r text --100 --all --allowExternal --src lib/ --src test/ \
-  npx ava -v test/
+  node --test --test-reporter spec test/
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X npm login && docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X npm publish && docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X npm logout

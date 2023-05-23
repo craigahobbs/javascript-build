@@ -4,7 +4,7 @@
 package development.
 
 - Uses the official [Docker Node image](https://hub.docker.com/_/node) (configurable)
-- Run unit tests with [AVA](https://www.npmjs.com/package/ava)
+- Run unit tests with [node --test](https://nodejs.org/api/test.html)
 - Code coverage using [c8](https://www.npmjs.com/package/c8)
   - 100% code coverage enforced (configurable)
 - Static code analysis using [eslint](https://www.npmjs.com/package/eslint)
@@ -187,9 +187,7 @@ The following variables are supported:
 
 - `NODE_IMAGE` - The [node docker image](https://hub.docker.com/_/node/).
 
-- `AVA_VERSION` - The [AVA](https://www.npmjs.com/package/ava) package version.
-
-- `AVA_ARGS` - The AVA tool's command line arguments. Default is "test/".
+- `NODE_TEST_ARGS` - The `node --test` command line arguments. Default is "--test-reporter spec test/".
 
 - `C8_VERSION` - The [c8](https://www.npmjs.com/package/c8) package version.
 
