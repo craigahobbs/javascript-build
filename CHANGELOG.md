@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-05-23
+
+- [cedb3fe](https://github.com/craigahobbs/javascript-build/commit/cedb3fe) - use node --test for unit testing, deprecate AVA
+
 ## 2023-05-12
 
 - [fa3c180](https://github.com/craigahobbs/javascript-build/commit/fa3c180) - eslint 8.40, jsdom 22.0
