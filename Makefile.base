@@ -24,9 +24,6 @@ JSDOM_VERSION ?= ~22.0
 # node --test
 NODE_TEST_ARGS ?= --test-reporter spec test/
 
-# AVA (deprecated)
-AVA_ARGS ?= test/
-
 # C8
 C8_ARGS ?= --100 --all --allowExternal --src lib/ --src test/
 
