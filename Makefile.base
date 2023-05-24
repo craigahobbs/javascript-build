@@ -80,23 +80,14 @@ commit: test lint doc cover
 .PHONY: _test test
 test: _test
 _test: build/npm.build
-ifneq '$(AVA_TEST)' ''
-	$(NODE_DOCKER) npx ava -v$(if $(TEST), --match '$(TEST)')$(if $(AVA_ARGS), $(AVA_ARGS))
-else
 	$(NODE_DOCKER) node --test$(if $(TEST), --test-name-pattern '$(TEST)')$(if $(NODE_TEST_ARGS), $(NODE_TEST_ARGS))
-endif
 
 
 .PHONY: _cover cover
 cover: _cover
 _cover: build/npm.build
-ifneq '$(AVA_TEST)' ''
-	$(NODE_DOCKER) npx c8 -o build/coverage --temp-dir build/tmp -r html -r text$(if $(C8_ARGS), $(C8_ARGS)) \
-  npx ava -v$(if $(TEST), --match '$(TEST)')$(if $(AVA_ARGS), $(AVA_ARGS))
-else
 	$(NODE_DOCKER) npx c8 -o build/coverage --temp-dir build/tmp -r html -r text$(if $(C8_ARGS), $(C8_ARGS)) \
   node --test$(if $(TEST), --test-name-pattern '$(TEST)')$(if $(NODE_TEST_ARGS), $(NODE_TEST_ARGS))
-endif
 
 
 .PHONY: _lint lint
