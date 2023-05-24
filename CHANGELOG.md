@@ -2,6 +2,8 @@
 
 ## 2023-05-23
 
+- [c7e0e01](https://github.com/craigahobbs/javascript-build/commit/c7e0e01) - remove AVA
+
 - [cedb3fe](https://github.com/craigahobbs/javascript-build/commit/cedb3fe) - use node --test for unit testing, deprecate AVA
 
 ## 2023-05-12
