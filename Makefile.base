@@ -19,7 +19,6 @@ PYTHON_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pw
 C8_VERSION ?= ~7.13
 ESLINT_VERSION ?= ~8.40
 JSDOC_VERSION ?= ~4.0
-JSDOM_VERSION ?= ~22.0
 
 # node --test
 NODE_TEST_ARGS ?= --test-reporter spec test/
@@ -44,8 +43,7 @@ endif
 	$(NODE_DOCKER) npm install --save-dev \
   c8@'$(C8_VERSION)' \
   eslint@'$(ESLINT_VERSION)' \
-  jsdoc@'$(JSDOC_VERSION)' \
-  jsdom@'$(JSDOM_VERSION)'
+  jsdoc@'$(JSDOC_VERSION)'
 	mkdir -p $(dir $@)
 	touch $@
 
