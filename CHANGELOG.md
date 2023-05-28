@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-05-27
+
+- [c508170](https://github.com/craigahobbs/javascript-build/commit/c508170) - remove jsdom
+
 ## 2023-05-23
 
 - [c7e0e01](https://github.com/craigahobbs/javascript-build/commit/c7e0e01) - remove AVA
