@@ -19,6 +19,7 @@ PYTHON_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pw
 C8_VERSION ?= ~7.14
 ESLINT_VERSION ?= ~8.41
 JSDOC_VERSION ?= ~4.0
+JSDOM_VERSION ?= ~22.1
 
 # node --test
 NODE_TEST_ARGS ?= --test-reporter spec test/
@@ -40,10 +41,7 @@ build/npm.build:
 ifeq '$(NO_DOCKER)' ''
 	if [ "$$(docker images -q $(NODE_IMAGE))" = "" ]; then docker pull -q $(NODE_IMAGE); fi
 endif
-	$(NODE_DOCKER) npm install --save-dev \
-  c8@'$(C8_VERSION)' \
-  eslint@'$(ESLINT_VERSION)' \
-  jsdoc@'$(JSDOC_VERSION)'
+	$(NODE_DOCKER) npm install --save-dev c8@'$(C8_VERSION)' eslint@'$(ESLINT_VERSION)' jsdoc@'$(JSDOC_VERSION)'$(if $(USE_JSDOM), jsdom@'$(JSDOM_VERSION)')
 	mkdir -p $(dir $@)
 	touch $@
 

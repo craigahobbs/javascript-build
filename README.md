@@ -201,6 +201,10 @@ The following variables are supported:
 
 - `JSDOC_ARGS` - The jsdoc tool's command line arguments. Default is "-c jsdoc.json -r README.md lib/".
 
+- `JSDOM_VERSION` - The [jsdom](https://www.npmjs.com/package/jsdom) package version.
+
+- `USE_JSDOM` - If set, [jsdom](https://www.npmjs.com/package/jsdom) is added as a development dependency.
+
 
 ### Pre-Include Make Variables
 

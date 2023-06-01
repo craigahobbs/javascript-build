@@ -73,6 +73,7 @@ $(eval $(call TEST_RULE, test, test))
 $(eval $(call TEST_RULE, test-2, test))
 $(eval $(call TEST_RULE, test-no-docker, test NO_DOCKER=1))
 $(eval $(call TEST_RULE, test-no-docker-2, test NO_DOCKER=1))
+$(eval $(call TEST_RULE, test-use-jsdom, test))
 
 
 .PHONY: changelog
