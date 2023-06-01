@@ -1,5 +1,11 @@
 # Changelog
 
+## 2023-06-01
+
+- [a1d34b3](https://github.com/craigahobbs/javascript-build/commit/a1d34b3) - restore JSDOM_VERSION, add USE_JSDOM to add jsdom development dependency
+
+- [f6b1e39](https://github.com/craigahobbs/javascript-build/commit/f6b1e39) - c8 7.14, eslint 8.41
+
 ## 2023-05-27
 
 - [c508170](https://github.com/craigahobbs/javascript-build/commit/c508170) - remove jsdom
