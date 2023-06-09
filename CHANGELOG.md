@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-06-09
+
+- [7d57723](https://github.com/craigahobbs/javascript-build/commit/7d57723) - fix make publish with docker
+
 ## 2023-06-01
 
 - [a1d34b3](https://github.com/craigahobbs/javascript-build/commit/a1d34b3) - restore JSDOM_VERSION, add USE_JSDOM to add jsdom development dependency
