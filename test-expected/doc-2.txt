@@ -1,1 +1,1 @@
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` node:X npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md lib/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd` node:X npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md lib/

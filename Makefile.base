@@ -9,7 +9,7 @@
 
 # Node
 NODE_IMAGE ?= node:current-slim
-NODE_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` $(NODE_IMAGE))
+NODE_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd` $(NODE_IMAGE))
 
 # Python
 PYTHON_IMAGE ?= python:3
