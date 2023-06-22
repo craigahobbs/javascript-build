@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-06-22
+
+- [135d394](https://github.com/craigahobbs/javascript-build/commit/135d394) - c8 8.0, eslint 8.43
+
 ## 2023-06-09
 
 - [7d57723](https://github.com/craigahobbs/javascript-build/commit/7d57723) - fix make publish with docker
