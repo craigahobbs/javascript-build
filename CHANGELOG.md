@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-06-29
+
+- [4e70579](https://github.com/craigahobbs/javascript-build/commit/4e70579) - enable eslint reportUnusedDisableDirectives
+
 ## 2023-06-22
 
 - [135d394](https://github.com/craigahobbs/javascript-build/commit/135d394) - c8 8.0, eslint 8.43
