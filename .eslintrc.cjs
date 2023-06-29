@@ -16,6 +16,7 @@ module.exports = {
     'parserOptions': {
         'sourceType': 'module'
     },
+    'reportUnusedDisableDirectives': true,
     'rules': {
         // Override
         'func-style': ['error', 'declaration', {'allowArrowFunctions': true}],
