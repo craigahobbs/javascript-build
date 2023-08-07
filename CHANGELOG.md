@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-08-07
+
+- [637b460](https://github.com/craigahobbs/javascript-build/commit/637b460) - eslint 8.46
+
 ## 2023-07-04
 
 - [2a5cc19](https://github.com/craigahobbs/javascript-build/commit/2a5cc19) - eslint 8.44
