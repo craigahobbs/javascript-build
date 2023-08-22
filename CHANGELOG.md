@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-08-22
+
+- [c7e3055](https://github.com/craigahobbs/javascript-build/commit/c7e3055) - update .eslintrc.cjs to es2022
+
 ## 2023-08-07
 
 - [637b460](https://github.com/craigahobbs/javascript-build/commit/637b460) - eslint 8.46
