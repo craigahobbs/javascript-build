@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-10-20
+
+- [92e7b13](https://github.com/craigahobbs/javascript-build/commit/92e7b13) - use node:20-slim since node:21 is jacked
+
 ## 2023-09-27
 
 - [4e5e8cb](https://github.com/craigahobbs/javascript-build/commit/4e5e8cb) - eslint 8.50
