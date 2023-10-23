@@ -8,7 +8,7 @@
 
 
 # Node
-NODE_IMAGE ?= node:20-slim
+NODE_IMAGE ?= node:current-slim
 NODE_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build $(NODE_IMAGE))
 
 # Python
@@ -22,7 +22,7 @@ JSDOC_VERSION ?= ~4.0
 JSDOM_VERSION ?= ~22.1
 
 # node --test
-NODE_TEST_ARGS ?= --test-reporter spec test/
+NODE_TEST_ARGS ?= --test-reporter spec test/**/*.js
 
 # C8
 C8_ARGS ?= --100 --all --allowExternal --src lib/ --src test/
