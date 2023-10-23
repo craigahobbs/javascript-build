@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-10-23
+
+- [d72ecf6](https://github.com/craigahobbs/javascript-build/commit/d72ecf6) - fix node --test usage
+
 ## 2023-10-20
 
 - [92e7b13](https://github.com/craigahobbs/javascript-build/commit/92e7b13) - use node:20-slim since node:21 is jacked
