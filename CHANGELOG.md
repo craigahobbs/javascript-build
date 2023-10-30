@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-10-30
+
+- [b955143](https://github.com/craigahobbs/javascript-build/commit/b955143) - eslint 8.52
+
 ## 2023-10-23
 
 - [d72ecf6](https://github.com/craigahobbs/javascript-build/commit/d72ecf6) - fix node --test usage
