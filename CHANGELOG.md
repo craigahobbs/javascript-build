@@ -1,5 +1,9 @@
 # Changelog
 
+## 2023-12-01
+
+- [13ca936](https://github.com/craigahobbs/javascript-build/commit/13ca936) - eslint 8.54, jsdom 23.0
+
 ## 2023-10-30
 
 - [b955143](https://github.com/craigahobbs/javascript-build/commit/b955143) - eslint 8.52
