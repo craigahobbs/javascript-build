@@ -17,9 +17,9 @@ PYTHON_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pw
 
 # Develpment dependencies
 C8_VERSION ?= ~8.0
-ESLINT_VERSION ?= ~8.52
+ESLINT_VERSION ?= ~8.54
 JSDOC_VERSION ?= ~4.0
-JSDOM_VERSION ?= ~22.1
+JSDOM_VERSION ?= ~23.0
 
 # node --test
 NODE_TEST_ARGS ?= --test-reporter spec test/**/*.js
