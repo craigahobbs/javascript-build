@@ -2,6 +2,8 @@
 
 ## 2024-01-29
 
+- [8bfe670](https://github.com/craigahobbs/javascript-build/commit/8bfe670) - fix node --test for non-windows
+
 - [e9cf543](https://github.com/craigahobbs/javascript-build/commit/e9cf543) - run node --test without wildcards - does not work on Windows
 
 - [5f7c55e](https://github.com/craigahobbs/javascript-build/commit/5f7c55e) - eslint 8.56
