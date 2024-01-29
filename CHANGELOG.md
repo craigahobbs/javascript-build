@@ -1,5 +1,11 @@
 # Changelog
 
+## 2024-01-29
+
+- [e9cf543](https://github.com/craigahobbs/javascript-build/commit/e9cf543) - run node --test without wildcards - does not work on Windows
+
+- [5f7c55e](https://github.com/craigahobbs/javascript-build/commit/5f7c55e) - eslint 8.56
+
 ## 2023-12-23
 
 - [46b7533](https://github.com/craigahobbs/javascript-build/commit/46b7533) - eslint 8.56
