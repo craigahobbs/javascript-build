@@ -22,11 +22,7 @@ JSDOC_VERSION ?= ~4.0
 JSDOM_VERSION ?= ~23.0
 
 # node --test
-ifeq '$(OS)' 'Windows_NT'
-NODE_TEST_ARGS ?= --test-reporter spec test/
-else
-NODE_TEST_ARGS ?= --test-reporter spec test/**/*.js
-endif
+NODE_TEST_ARGS ?= --test-reporter spec
 
 # C8
 C8_ARGS ?= --100 --all --allowExternal --src lib/ --src test/
