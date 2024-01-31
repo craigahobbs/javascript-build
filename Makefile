@@ -50,6 +50,10 @@ endef
 unexport NO_DOCKER
 
 
+# Don't test anything OS-specific
+OS := Unknown
+
+
 # Tests
 $(eval $(call TEST_RULE, changelog, changelog))
 $(eval $(call TEST_RULE, changelog-2, changelog))
@@ -78,11 +82,19 @@ $(eval $(call TEST_RULE, test-use-jsdom, test))
 
 .PHONY: changelog
 changelog: build/venv.build
-	build/venv/bin/simple-git-changelog
+	build/venv/$(VENV_BIN)/simple-git-changelog
 
 
 build/venv.build:
-	python3 -m venv build/venv
-	build/venv/bin/pip -q install --progress-bar off -U pip setuptools
-	build/venv/bin/pip -q install --progress-bar off simple-git-changelog
+	python3 -m venv --upgrade-deps build/venv
+	build/venv/$(VENV_BIN)/pip -q install --progress-bar off simple-git-changelog
 	touch $@
+
+
+# Windows support
+VENV_BIN := bin
+ifeq '$(OS)' 'Windows_NT'
+ifeq ($(shell python3 -c "import sysconfig; print(sysconfig.get_preferred_scheme('user'))"),nt_user)
+VENV_BIN := Scripts
+endif
+endif
