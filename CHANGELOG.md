@@ -1,9 +1,5 @@
 # Changelog
 
-## 2024-01-31
-
-- [fe194db](https://github.com/craigahobbs/javascript-build/commit/fe194db) - simplify node --test usage
-
 ## 2024-01-29
 
 - [8bfe670](https://github.com/craigahobbs/javascript-build/commit/8bfe670) - fix node --test for non-windows
