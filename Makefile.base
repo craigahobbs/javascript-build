@@ -16,10 +16,10 @@ PYTHON_IMAGE ?= python:3
 PYTHON_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` $(PYTHON_IMAGE))
 
 # Develpment dependencies
-C8_VERSION ?= ~8.0
+C8_VERSION ?= ~9.1
 ESLINT_VERSION ?= ~8.56
 JSDOC_VERSION ?= ~4.0
-JSDOM_VERSION ?= ~23.0
+JSDOM_VERSION ?= ~24.0
 
 # node --test
 ifeq '$(OS)' 'Windows_NT'
