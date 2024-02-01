@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024-02-01
+
+- [7abfe1b](https://github.com/craigahobbs/javascript-build/commit/7abfe1b) - c8 9.1, jsdom 24.0
+
 ## 2024-01-29
 
 - [8bfe670](https://github.com/craigahobbs/javascript-build/commit/8bfe670) - fix node --test for non-windows
