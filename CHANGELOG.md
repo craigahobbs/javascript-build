@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024-02-26
+
+- [4c899b4](https://github.com/craigahobbs/javascript-build/commit/4c899b4) - disable eslint no-await-in-loop
+
 ## 2024-02-01
 
 - [7abfe1b](https://github.com/craigahobbs/javascript-build/commit/7abfe1b) - c8 9.1, jsdom 24.0
