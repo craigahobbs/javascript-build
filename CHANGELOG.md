@@ -1,5 +1,11 @@
 # Changelog
 
+## 2024-03-11
+
+- [dc394d0](https://github.com/craigahobbs/javascript-build/commit/dc394d0) - enable jsdoc markdown plugin to enable doc-relative links
+
+- [bc328cb](https://github.com/craigahobbs/javascript-build/commit/bc328cb) - eslint 8.57
+
 ## 2024-02-26
 
 - [4c899b4](https://github.com/craigahobbs/javascript-build/commit/4c899b4) - disable eslint no-await-in-loop
