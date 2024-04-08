@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024-04-08
+
+- [bc93ae9](https://github.com/craigahobbs/javascript-build/commit/bc93ae9) - eslint 9.0
+
 ## 2024-03-11
 
 - [dc394d0](https://github.com/craigahobbs/javascript-build/commit/dc394d0) - enable jsdoc markdown plugin to enable doc-relative links
