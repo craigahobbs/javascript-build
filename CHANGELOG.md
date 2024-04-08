@@ -2,6 +2,8 @@
 
 ## 2024-04-08
 
+- [610cbb6](https://github.com/craigahobbs/javascript-build/commit/610cbb6) - remove eslint.config.js default values
+
 - [62d205d](https://github.com/craigahobbs/javascript-build/commit/62d205d) - remove eslint.config.js default values
 
 - [bc93ae9](https://github.com/craigahobbs/javascript-build/commit/bc93ae9) - eslint 9.0
