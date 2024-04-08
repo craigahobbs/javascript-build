@@ -2,4 +2,4 @@ if [ "$(docker images -q node:X)" = "" ]; then docker pull -q node:X; fi
 docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:X npm install --save-dev c8@'~X.Y' eslint@'~X.Y' jsdoc@'~X.Y'
 mkdir -p build/
 touch build/npm.build
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:X npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs lib/ test/
+docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:X npx eslint eslint.config.js lib/ test/

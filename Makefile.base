@@ -17,7 +17,7 @@ PYTHON_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pw
 
 # Develpment dependencies
 C8_VERSION ?= ~9.1
-ESLINT_VERSION ?= ~8.57
+ESLINT_VERSION ?= ~9.0
 JSDOC_VERSION ?= ~4.0
 JSDOM_VERSION ?= ~24.0
 
@@ -90,7 +90,7 @@ _cover: build/npm.build
 .PHONY: _lint lint
 lint: _lint
 _lint: build/npm.build
-	$(NODE_DOCKER) npx eslint -c .eslintrc.cjs -f unix .eslintrc.cjs$(if $(ESLINT_ARGS), $(ESLINT_ARGS))
+	$(NODE_DOCKER) npx eslint eslint.config.js$(if $(ESLINT_ARGS), $(ESLINT_ARGS))
 
 
 .PHONY: _doc doc
