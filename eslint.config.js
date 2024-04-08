@@ -10,13 +10,9 @@ export default [
     {
         'languageOptions': {
             'ecmaVersion': 2022,
-            'sourceType': 'module',
             'globals': {
                 ...globals.browser
             }
-        },
-        'linterOptions': {
-            'reportUnusedDisableDirectives': 'warn'
         },
         'rules': {
             // Override
