@@ -21,7 +21,6 @@ export default [
             'max-len': ['error', {'code': 140, 'tabWidth': 4}],
             'padded-blocks': ['error', 'never'],
             'quotes': ['error', 'single', {'avoidEscape': true, 'allowTemplateLiterals': true}],
-            'semi': ['error', 'always'],
 
             // Disabled
             'array-bracket-newline': 'off',
