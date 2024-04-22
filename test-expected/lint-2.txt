@@ -1,1 +1,1 @@
-docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` -e HOME=`pwd`/build node:X npx eslint eslint.config.js lib/ test/
+docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X npx eslint eslint.config.js lib/ test/
