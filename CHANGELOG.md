@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024-05-04
+
+- [76018dc](https://github.com/craigahobbs/javascript-build/commit/76018dc) - eslint 9.2
+
 ## 2024-04-22
 
 - [758d3cc](https://github.com/craigahobbs/javascript-build/commit/758d3cc) - enable the node cache under docker
