@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024-06-16
+
+- [e407381](https://github.com/craigahobbs/javascript-build/commit/e407381) - c8 10.1, eslint 9.5
+
 ## 2024-06-01
 
 - [74600ce](https://github.com/craigahobbs/javascript-build/commit/74600ce) - eslint 9.4, jsdom 24.1
