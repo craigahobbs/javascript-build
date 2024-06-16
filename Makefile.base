@@ -16,8 +16,8 @@ PYTHON_IMAGE ?= python:3
 PYTHON_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` $(PYTHON_IMAGE))
 
 # Develpment dependencies
-C8_VERSION ?= ~9.1
-ESLINT_VERSION ?= ~9.4
+C8_VERSION ?= ~10.1
+ESLINT_VERSION ?= ~9.5
 JSDOC_VERSION ?= ~4.0
 JSDOM_VERSION ?= ~24.1
 
