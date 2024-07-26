@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024-07-26
+
+- [bd4a5c6](https://github.com/craigahobbs/javascript-build/commit/bd4a5c6) - eslint 9.8
+
 ## 2024-07-13
 
 - [c5d3157](https://github.com/craigahobbs/javascript-build/commit/c5d3157) - eslint 9.7
