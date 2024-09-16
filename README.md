@@ -49,9 +49,9 @@ _WGET := $$(shell $(call WGET_CMD, $(1)))
 endif
 endef
 WGET_CMD = if which wget; then wget -q -c $(1); else curl -f -Os $(1); fi
-$(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-build/main/Makefile.base))
-$(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-build/main/jsdoc.json))
-$(eval $(call WGET, https://raw.githubusercontent.com/craigahobbs/javascript-build/main/eslint.config.js))
+$(eval $(call WGET, https://craigahobbs.github.io/javascript-build/Makefile.base))
+$(eval $(call WGET, https://craigahobbs.github.io/javascript-build/jsdoc.json))
+$(eval $(call WGET, https://craigahobbs.github.io/javascript-build/eslint.config.js))
 
 # Include javascript-build
 include Makefile.base
