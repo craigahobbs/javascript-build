@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024-10-15
+
+- [81b2671](https://github.com/craigahobbs/javascript-build/commit/81b2671) - add eslint no-unused-vars argsIgnorePattern \('^_'\)
+
 ## 2024-10-02
 
 - [3b12017](https://github.com/craigahobbs/javascript-build/commit/3b12017) - eslint 9.11
