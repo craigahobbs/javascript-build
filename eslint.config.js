@@ -19,6 +19,7 @@ export default [
             'func-style': ['error', 'declaration', {'allowArrowFunctions': true}],
             'function-paren-newline': ['error', 'consistent'],
             'max-len': ['error', {'code': 140, 'tabWidth': 4}],
+            'no-unused-vars': ['error', {'argsIgnorePattern': '^_'}],
             'padded-blocks': ['error', 'never'],
             'quotes': ['error', 'single', {'avoidEscape': true, 'allowTemplateLiterals': true}],
 
