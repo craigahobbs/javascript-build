@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024-10-18
+
+- [b735e2e](https://github.com/craigahobbs/javascript-build/commit/b735e2e) - use node 22 since node 23 is having issues with c8
+
 ## 2024-10-15
 
 - [81b2671](https://github.com/craigahobbs/javascript-build/commit/81b2671) - add eslint no-unused-vars argsIgnorePattern \('^_'\)
