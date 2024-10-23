@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024-10-23
+
+- [1fd43b8](https://github.com/craigahobbs/javascript-build/commit/1fd43b8) - eslint 9.13
+
 ## 2024-10-18
 
 - [b735e2e](https://github.com/craigahobbs/javascript-build/commit/b735e2e) - use node 22 since node 23 is having issues with c8
