@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024-11-01
+
+- [12e93a1](https://github.com/craigahobbs/javascript-build/commit/12e93a1) - eslint 9.14
+
 ## 2024-10-26
 
 - [a92ec23](https://github.com/craigahobbs/javascript-build/commit/a92ec23) - restore use of current node
