@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-01-10
+
+- [ca3649b](https://github.com/craigahobbs/javascript-build/commit/ca3649b) - eslint 9.18
+
 ## 2025-01-09
 
 - [49c58cf](https://github.com/craigahobbs/javascript-build/commit/49c58cf) - jsdom 26.0
