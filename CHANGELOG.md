@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-02-02
+
+- [64d44b3](https://github.com/craigahobbs/javascript-build/commit/64d44b3) - eslint 9.19
+
 ## 2025-01-10
 
 - [ca3649b](https://github.com/craigahobbs/javascript-build/commit/ca3649b) - eslint 9.18
