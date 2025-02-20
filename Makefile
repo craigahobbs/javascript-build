@@ -46,8 +46,8 @@ test: test-$(strip $(1))
 endef
 
 
-# Un-export base makefile variables
-unexport NO_DOCKER
+# Use podman by default
+export USE_PODMAN=1
 
 
 # Don't test anything OS-specific
@@ -57,7 +57,7 @@ OS := Unknown
 # Tests
 $(eval $(call TEST_RULE, changelog, changelog))
 $(eval $(call TEST_RULE, changelog-2, changelog))
-$(eval $(call TEST_RULE, changelog-no-docker, changelog))
+$(eval $(call TEST_RULE, changelog-no-podman, changelog USE_PODMAN=))
 $(eval $(call TEST_RULE, clean, clean))
 $(eval $(call TEST_RULE, commit, commit))
 $(eval $(call TEST_RULE, commit-2, commit))
@@ -75,8 +75,8 @@ $(eval $(call TEST_RULE, publish-2, publish))
 $(eval $(call TEST_RULE, superclean, superclean))
 $(eval $(call TEST_RULE, test, test))
 $(eval $(call TEST_RULE, test-2, test))
-$(eval $(call TEST_RULE, test-no-docker, test NO_DOCKER=1))
-$(eval $(call TEST_RULE, test-no-docker-2, test NO_DOCKER=1))
+$(eval $(call TEST_RULE, test-no-podman, test USE_PODMAN=))
+$(eval $(call TEST_RULE, test-no-podman-2, test USE_PODMAN=))
 $(eval $(call TEST_RULE, test-use-jsdom, test))
 
 

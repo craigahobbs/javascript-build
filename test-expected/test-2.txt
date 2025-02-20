@@ -1,1 +1,1 @@
-docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X node --test --test-reporter spec test/**/*.js
+podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X node --test --test-reporter spec test/**/*.js

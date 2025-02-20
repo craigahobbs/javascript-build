@@ -3,7 +3,7 @@
 **javascript-build** is a lightweight GNU Make-based build system for best-practice JavaScript
 package development.
 
-- Uses the official [Docker Node image](https://hub.docker.com/_/node) (configurable)
+- Uses the system Node or the official Node container image
 - Run unit tests with [node --test](https://nodejs.org/api/test.html)
 - Code coverage using [c8](https://www.npmjs.com/package/c8)
   - 100% code coverage enforced (configurable)
@@ -127,7 +127,7 @@ Delete all development artifacts.
 
 ### superclean
 
-Delete all development artifacts and downloaded docker images.
+Delete all development artifacts and downloaded images.
 
 ### changelog
 
@@ -185,7 +185,7 @@ NODE_IMAGE := node:15
 
 The following variables are supported:
 
-- `NODE_IMAGE` - The [node docker image](https://hub.docker.com/_/node/).
+- `NODE_IMAGE` - The node image.
 
 - `NODE_TEST_ARGS` - The `node --test` command line arguments. Default is "--test-reporter spec test/".
 
@@ -224,10 +224,10 @@ include Makefile.base
 
 ### Other Make Variables
 
-- `NO_DOCKER` - Use the system node instead of docker. This is intended to be used from the command line:
+- `USE_PODMAN` - Use [podman](https://podman.io/) and test with the official Node image.
 
 ~~~
-make commit NO_DOCKER=1
+make commit USE_PODMAN=1
 ~~~
 
 

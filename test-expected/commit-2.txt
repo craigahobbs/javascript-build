@@ -1,5 +1,5 @@
-docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X node --test --test-reporter spec test/**/*.js
-docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X npx eslint eslint.config.js lib/ test/
-docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md lib/
-docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X npx c8 -o build/coverage --temp-dir build/tmp -r html -r text --100 --all --allowExternal --src lib/ --src test/ \
+podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X node --test --test-reporter spec test/**/*.js
+podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X npx eslint eslint.config.js lib/ test/
+podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md lib/
+podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X npx c8 -o build/coverage --temp-dir build/tmp -r html -r text --100 --all --allowExternal --src lib/ --src test/ \
   node --test --test-reporter spec test/**/*.js

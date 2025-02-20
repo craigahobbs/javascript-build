@@ -9,11 +9,11 @@
 
 # Node
 NODE_IMAGE ?= node:current-slim
-NODE_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v $$HOME:$$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$$HOME $(NODE_IMAGE))
+NODE_SHELL := $(if $(USE_PODMAN),podman run -i --rm -v $$HOME:$$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$$HOME $(NODE_IMAGE))
 
 # Python
 PYTHON_IMAGE ?= python:3
-PYTHON_DOCKER := $(if $(NO_DOCKER),,docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` $(PYTHON_IMAGE))
+PYTHON_SHELL := $(if $(USE_PODMAN),podman run -i --rm -v `pwd`:`pwd` -w `pwd` $(PYTHON_IMAGE))
 
 # Develpment dependencies
 C8_VERSION ?= ~10.1
@@ -22,11 +22,7 @@ JSDOC_VERSION ?= ~4.0
 JSDOM_VERSION ?= ~26.0
 
 # node --test
-ifeq '$(OS)' 'Windows_NT'
-NODE_TEST_ARGS ?= --test-reporter spec test/
-else
 NODE_TEST_ARGS ?= --test-reporter spec test/**/*.js
-endif
 
 # C8
 C8_ARGS ?= --100 --all --allowExternal --src lib/ --src test/
@@ -42,10 +38,10 @@ GHPAGES_SRC ?= build/doc/
 
 
 build/npm.build:
-ifeq '$(NO_DOCKER)' ''
-	if [ "$$(docker images -q $(NODE_IMAGE))" = "" ]; then docker pull -q $(NODE_IMAGE); fi
+ifneq '$(USE_PODMAN)' ''
+	if [ "$$(podman images -q $(NODE_IMAGE))" = "" ]; then podman pull -q $(NODE_IMAGE); fi
 endif
-	$(NODE_DOCKER) npm install --save-dev c8@'$(C8_VERSION)' eslint@'$(ESLINT_VERSION)' jsdoc@'$(JSDOC_VERSION)'$(if $(USE_JSDOM), jsdom@'$(JSDOM_VERSION)')
+	$(NODE_SHELL) npm install --save-dev c8@'$(C8_VERSION)' eslint@'$(ESLINT_VERSION)' jsdoc@'$(JSDOC_VERSION)'$(if $(USE_JSDOM), jsdom@'$(JSDOM_VERSION)')
 	mkdir -p $(dir $@)
 	touch $@
 
@@ -65,8 +61,8 @@ _clean:
 .PHONY: _superclean superclean
 superclean: _superclean
 _superclean: clean
-ifeq '$(NO_DOCKER)' ''
-	-docker rmi -f $(NODE_IMAGE) $(PYTHON_IMAGE)
+ifneq '$(USE_PODMAN)' ''
+	-podman rmi -f $(NODE_IMAGE) $(PYTHON_IMAGE)
 endif
 
 
@@ -77,26 +73,26 @@ commit: test lint doc cover
 .PHONY: _test test
 test: _test
 _test: build/npm.build
-	$(NODE_DOCKER) node --test$(if $(TEST), --test-name-pattern '$(TEST)')$(if $(NODE_TEST_ARGS), $(NODE_TEST_ARGS))
+	$(NODE_SHELL) node --test$(if $(TEST), --test-name-pattern '$(TEST)')$(if $(NODE_TEST_ARGS), $(NODE_TEST_ARGS))
 
 
 .PHONY: _cover cover
 cover: _cover
 _cover: build/npm.build
-	$(NODE_DOCKER) npx c8 -o build/coverage --temp-dir build/tmp -r html -r text$(if $(C8_ARGS), $(C8_ARGS)) \
+	$(NODE_SHELL) npx c8 -o build/coverage --temp-dir build/tmp -r html -r text$(if $(C8_ARGS), $(C8_ARGS)) \
   node --test$(if $(TEST), --test-name-pattern '$(TEST)')$(if $(NODE_TEST_ARGS), $(NODE_TEST_ARGS))
 
 
 .PHONY: _lint lint
 lint: _lint
 _lint: build/npm.build
-	$(NODE_DOCKER) npx eslint eslint.config.js$(if $(ESLINT_ARGS), $(ESLINT_ARGS))
+	$(NODE_SHELL) npx eslint eslint.config.js$(if $(ESLINT_ARGS), $(ESLINT_ARGS))
 
 
 .PHONY: _doc doc
 doc: _doc
 _doc: build/npm.build
-	$(NODE_DOCKER) npx jsdoc --pedantic -d build/doc/$(if $(JSDOC_ARGS), $(JSDOC_ARGS))
+	$(NODE_SHELL) npx jsdoc --pedantic -d build/doc/$(if $(JSDOC_ARGS), $(JSDOC_ARGS))
 
 
 .PHONY: _gh-pages gh-pages
@@ -113,19 +109,19 @@ endif
 .PHONY: _publish publish
 publish: _publish
 _publish: commit
-	$(NODE_DOCKER) npm login && $(NODE_DOCKER) npm publish && $(NODE_DOCKER) npm logout
+	$(NODE_SHELL) npm login && $(NODE_SHELL) npm publish && $(NODE_SHELL) npm logout
 
 
 .PHONY: _changelog changelog
 changelog: _changelog
 _changelog: build/venv-changelog.build
-	$(PYTHON_DOCKER) build/venv-changelog/bin/simple-git-changelog
+	$(PYTHON_SHELL) build/venv-changelog/bin/simple-git-changelog
 
 
 build/venv-changelog.build:
-ifeq '$(NO_DOCKER)' ''
-	if [ "$$(docker images -q $(PYTHON_IMAGE))" = "" ]; then docker pull -q $(PYTHON_IMAGE); fi
+ifneq '$(USE_PODMAN)' ''
+	if [ "$$(podman images -q $(PYTHON_IMAGE))" = "" ]; then podman pull -q $(PYTHON_IMAGE); fi
 endif
-	$(PYTHON_DOCKER) python3 -m venv build/venv-changelog
-	$(PYTHON_DOCKER) build/venv-changelog/bin/pip install -U pip setuptools wheel simple-git-changelog
+	$(PYTHON_SHELL) python3 -m venv build/venv-changelog
+	$(PYTHON_SHELL) build/venv-changelog/bin/pip install -U pip setuptools wheel simple-git-changelog
 	touch $@
