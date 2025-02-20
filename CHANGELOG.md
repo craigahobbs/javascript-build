@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-02-20
+
+- [a3a4acc](https://github.com/craigahobbs/javascript-build/commit/a3a4acc) - use podman instead of docker, use system node by default
+
 ## 2025-02-02
 
 - [64d44b3](https://github.com/craigahobbs/javascript-build/commit/64d44b3) - eslint 9.19
