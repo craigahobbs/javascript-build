@@ -2,8 +2,6 @@
 
 ## 2025-02-27
 
-- [5181755](https://github.com/craigahobbs/javascript-build/commit/5181755) - cleanup node 22 check
-
 - [8a6790c](https://github.com/craigahobbs/javascript-build/commit/8a6790c) - fix test target for node versions less than 22 \(really, really this time\)
 
 - [b68d0c7](https://github.com/craigahobbs/javascript-build/commit/b68d0c7) - fix test target for node versions less than 22 \(really this time\)
