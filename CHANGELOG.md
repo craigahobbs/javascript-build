@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-02-27
+
+- [ccd10fc](https://github.com/craigahobbs/javascript-build/commit/ccd10fc) - fix test target for node versions less than 22
+
 ## 2025-02-20
 
 - [a3a4acc](https://github.com/craigahobbs/javascript-build/commit/a3a4acc) - use podman instead of docker, use system node by default
