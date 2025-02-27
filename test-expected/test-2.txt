@@ -1,1 +1,1 @@
-podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X node --test --test-reporter spec `podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")'`
+podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X node --test --test-reporter spec $(podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")')

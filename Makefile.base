@@ -22,7 +22,7 @@ JSDOC_VERSION ?= ~4.0
 JSDOM_VERSION ?= ~26.0
 
 # node --test
-NODE_TEST_ARGS ?= --test-reporter spec `$(strip $(NODE_SHELL) node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js"))'`
+NODE_TEST_ARGS ?= --test-reporter spec $$($(strip $(NODE_SHELL) node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")'))
 
 # C8
 C8_ARGS ?= --100 --all --allowExternal --src lib/ --src test/
