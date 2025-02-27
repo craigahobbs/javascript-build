@@ -2,6 +2,8 @@
 
 ## 2025-02-27
 
+- [b68d0c7](https://github.com/craigahobbs/javascript-build/commit/b68d0c7) - fix test target for node versions less than 22 \(really this time\)
+
 - [ccd10fc](https://github.com/craigahobbs/javascript-build/commit/ccd10fc) - fix test target for node versions less than 22
 
 ## 2025-02-20
