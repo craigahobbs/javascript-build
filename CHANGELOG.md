@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-03-01
+
+- [a1a5a90](https://github.com/craigahobbs/javascript-build/commit/a1a5a90) - eslint 9.21
+
 ## 2025-02-27
 
 - [8a6790c](https://github.com/craigahobbs/javascript-build/commit/8a6790c) - fix test target for node versions less than 22 \(really, really this time\)
