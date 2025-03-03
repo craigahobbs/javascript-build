@@ -45,7 +45,7 @@ The basic javascript-build "Makefile" is as follows:
 define WGET
 ifeq '$$(wildcard $(notdir $(1)))' ''
 $$(info Downloading $(notdir $(1)))
-_WGET := $$(shell $(call WGET_CMD, $(1)))
+_WGET := $$(shell [ -f ../javascript-build/$(notdir $(1)) ] && cp ../javascript-build/$(notdir $(1)) . || $(call WGET_CMD, $(1)))
 endif
 endef
 WGET_CMD = if which wget; then wget -q -c $(1); else curl -f -Os $(1); fi
