@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-03-03
+
+- [5efefd0](https://github.com/craigahobbs/javascript-build/commit/5efefd0) - attempt to copy build files from ../javascript-build before doing wget/curl
+
 ## 2025-03-01
 
 - [a1a5a90](https://github.com/craigahobbs/javascript-build/commit/a1a5a90) - eslint 9.21
