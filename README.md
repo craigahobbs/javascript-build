@@ -42,10 +42,11 @@ The basic javascript-build "Makefile" is as follows:
 
 ~~~ make
 # Download javascript-build
+JAVASCRIPT_BUILD_DIR ?= ../javascript-build
 define WGET
 ifeq '$$(wildcard $(notdir $(1)))' ''
 $$(info Downloading $(notdir $(1)))
-_WGET := $$(shell [ -f ../javascript-build/$(notdir $(1)) ] && cp ../javascript-build/$(notdir $(1)) . || $(call WGET_CMD, $(1)))
+_WGET := $$(shell [ -f $(JAVASCRIPT_BUILD_DIR)/$(notdir $(1)) ] && cp $(JAVASCRIPT_BUILD_DIR)/$(notdir $(1)) . || $(call WGET_CMD, $(1)))
 endif
 endef
 WGET_CMD = if which wget; then wget -q -c $(1); else curl -f -Os $(1); fi
