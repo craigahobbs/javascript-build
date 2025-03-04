@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-03-04
+
+- [5e94f3e](https://github.com/craigahobbs/javascript-build/commit/5e94f3e) - add JAVASCRIPT_BUILD_DIR to stub
+
 ## 2025-03-03
 
 - [5efefd0](https://github.com/craigahobbs/javascript-build/commit/5efefd0) - attempt to copy build files from ../javascript-build before doing wget/curl
