@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-04-01
+
+- [7dd119e](https://github.com/craigahobbs/javascript-build/commit/7dd119e) - eslint 9.23
+
 ## 2025-03-04
 
 - [5e94f3e](https://github.com/craigahobbs/javascript-build/commit/5e94f3e) - add JAVASCRIPT_BUILD_DIR to stub
