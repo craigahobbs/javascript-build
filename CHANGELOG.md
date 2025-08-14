@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-08-13
+
+- [2f1b745](https://github.com/craigahobbs/javascript-build/commit/2f1b745) - eslint 9.33
+
 ## 2025-08-01
 
 - [ef60500](https://github.com/craigahobbs/javascript-build/commit/ef60500) - eslint 9.32
