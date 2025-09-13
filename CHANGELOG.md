@@ -1,5 +1,13 @@
 # Changelog
 
+## 2025-09-13
+
+- [15fa1c7](https://github.com/craigahobbs/javascript-build/commit/15fa1c7) - eslint 9.35, jsdom 27.0
+
+## 2025-08-30
+
+- [a38e002](https://github.com/craigahobbs/javascript-build/commit/a38e002) - eslint 9.34
+
 ## 2025-08-13
 
 - [2f1b745](https://github.com/craigahobbs/javascript-build/commit/2f1b745) - eslint 9.33
