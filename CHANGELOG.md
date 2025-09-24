@@ -2,6 +2,8 @@
 
 ## 2025-09-24
 
+- [1daea56](https://github.com/craigahobbs/javascript-build/commit/1daea56) - disable eslint no-loss-of-precision warning
+
 - [6b9bd8e](https://github.com/craigahobbs/javascript-build/commit/6b9bd8e) - disable eslint no-bitwise warning
 
 ## 2025-09-13
