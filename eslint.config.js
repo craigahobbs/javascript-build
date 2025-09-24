@@ -47,6 +47,7 @@ export default [
             'no-implicit-coercion': 'off',
             'no-inline-comments': 'off',
             'no-lonely-if': 'off',
+            'no-loss-of-precision': 'off',
             'no-magic-numbers': 'off',
             'no-mixed-operators': 'off',
             'no-negated-condition': 'off',
