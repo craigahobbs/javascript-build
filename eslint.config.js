@@ -41,6 +41,7 @@ export default [
             'multiline-ternary': 'off',
             'newline-per-chained-call': 'off',
             'no-await-in-loop': 'off',
+            'no-bitwise': 'off',
             'no-continue': 'off',
             'no-extra-parens': 'off',
             'no-implicit-coercion': 'off',
