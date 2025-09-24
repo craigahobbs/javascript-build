@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-09-24
+
+- [6b9bd8e](https://github.com/craigahobbs/javascript-build/commit/6b9bd8e) - disable eslint no-bitwise warning
+
 ## 2025-09-13
 
 - [15fa1c7](https://github.com/craigahobbs/javascript-build/commit/15fa1c7) - eslint 9.35, jsdom 27.0
