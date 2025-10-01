@@ -17,7 +17,7 @@ PYTHON_SHELL := $(if $(USE_PODMAN),podman run -i --rm -v `pwd`:`pwd` -w `pwd` $(
 
 # Develpment dependencies
 C8_VERSION ?= ~10.1
-ESLINT_VERSION ?= ~9.35
+ESLINT_VERSION ?= ~9.36
 JSDOC_VERSION ?= ~4.0
 JSDOM_VERSION ?= ~27.0
 
