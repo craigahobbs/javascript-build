@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-10-01
+
+- [b959878](https://github.com/craigahobbs/javascript-build/commit/b959878) - eslint 9.36
+
 ## 2025-09-24
 
 - [1daea56](https://github.com/craigahobbs/javascript-build/commit/1daea56) - disable eslint no-loss-of-precision warning
