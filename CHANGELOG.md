@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-12-01
+
+- [70f7667](https://github.com/craigahobbs/javascript-build/commit/70f7667) - jsdom 27.2
+
 ## 2025-11-01
 
 - [bc7c922](https://github.com/craigahobbs/javascript-build/commit/bc7c922) - eslint 9.39, jsdom 27.1
