@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-01-01
+
+- [0339018](https://github.com/craigahobbs/javascript-build/commit/0339018) - jsdom 27.4
+
 ## 2025-12-01
 
 - [70f7667](https://github.com/craigahobbs/javascript-build/commit/70f7667) - jsdom 27.2
