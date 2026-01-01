@@ -19,7 +19,7 @@ PYTHON_SHELL := $(if $(USE_PODMAN),podman run -i --rm -v `pwd`:`pwd` -w `pwd` $(
 C8_VERSION ?= ~10.1
 ESLINT_VERSION ?= ~9.39
 JSDOC_VERSION ?= ~4.0
-JSDOM_VERSION ?= ~27.2
+JSDOM_VERSION ?= ~27.4
 
 # node --test
 NODE_TEST_ARGS ?= --test-reporter spec $$($(strip $(NODE_SHELL) node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")'))
