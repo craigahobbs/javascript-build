@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-01-02
+
+- [0d04005](https://github.com/craigahobbs/javascript-build/commit/0d04005) - restore USE_DOCKER
+
 ## 2026-01-01
 
 - [0339018](https://github.com/craigahobbs/javascript-build/commit/0339018) - jsdom 27.4
