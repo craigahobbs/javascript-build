@@ -1,0 +1,5 @@
+if [ "$(podman images -q python:3)" = "" ]; then podman pull -q python:3; fi
+podman run -i --rm -v `pwd`:`pwd` -w `pwd` python:3 python3 -m venv build/venv-changelog
+podman run -i --rm -v `pwd`:`pwd` -w `pwd` python:3 build/venv-changelog/bin/pip install -U pip setuptools wheel simple-git-changelog
+touch build/venv-changelog.build
+podman run -i --rm -v `pwd`:`pwd` -w `pwd` python:3 build/venv-changelog/bin/simple-git-changelog

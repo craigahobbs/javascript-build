@@ -1,2 +1,1 @@
 rm -rf build node_modules package-lock.json
-podman rmi -f node:X python:3

@@ -9,11 +9,19 @@
 
 # Node
 NODE_IMAGE ?= node:current-slim
-NODE_SHELL := $(if $(USE_PODMAN),podman run -i --rm -v $$HOME:$$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$$HOME $(NODE_IMAGE))
+ifneq '$(USE_DOCKER)' ''
+NODE_SHELL := docker run -i --rm -u `id -u`:`id -g` -v $$HOME:$$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$$HOME $(NODE_IMAGE)
+else ifneq '$(USE_PODMAN)' ''
+NODE_SHELL := podman run -i --rm -v $$HOME:$$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$$HOME $(NODE_IMAGE)
+endif
 
 # Python
 PYTHON_IMAGE ?= python:3
-PYTHON_SHELL := $(if $(USE_PODMAN),podman run -i --rm -v `pwd`:`pwd` -w `pwd` $(PYTHON_IMAGE))
+ifneq '$(USE_DOCKER)' ''
+PYTHON_SHELL := docker run -i --rm -u `id -u`:`id -g` -v `pwd`:`pwd` -w `pwd` $(PYTHON_IMAGE)
+else ifneq '$(USE_PODMAN)' ''
+PYTHON_SHELL := podman run -i --rm -v `pwd`:`pwd` -w `pwd` $(PYTHON_IMAGE)
+endif
 
 # Develpment dependencies
 C8_VERSION ?= ~10.1
@@ -38,7 +46,9 @@ GHPAGES_SRC ?= build/doc/
 
 
 build/npm.build:
-ifneq '$(USE_PODMAN)' ''
+ifneq '$(USE_DOCKER)' ''
+	if [ "$$(docker images -q $(NODE_IMAGE))" = "" ]; then docker pull -q $(NODE_IMAGE); fi
+else ifneq '$(USE_PODMAN)' ''
 	if [ "$$(podman images -q $(NODE_IMAGE))" = "" ]; then podman pull -q $(NODE_IMAGE); fi
 endif
 	$(NODE_SHELL) npm install --save-dev c8@'$(C8_VERSION)' eslint@'$(ESLINT_VERSION)' jsdoc@'$(JSDOC_VERSION)'$(if $(USE_JSDOM), jsdom@'$(JSDOM_VERSION)')
@@ -61,7 +71,9 @@ _clean:
 .PHONY: _superclean superclean
 superclean: _superclean
 _superclean: clean
-ifneq '$(USE_PODMAN)' ''
+ifneq '$(USE_DOCKER)' ''
+	-docker rmi -f $(NODE_IMAGE) $(PYTHON_IMAGE)
+else ifneq '$(USE_PODMAN)' ''
 	-podman rmi -f $(NODE_IMAGE) $(PYTHON_IMAGE)
 endif
 
@@ -119,7 +131,9 @@ _changelog: build/venv-changelog.build
 
 
 build/venv-changelog.build:
-ifneq '$(USE_PODMAN)' ''
+ifneq '$(USE_DOCKER)' ''
+	if [ "$$(docker images -q $(PYTHON_IMAGE))" = "" ]; then docker pull -q $(PYTHON_IMAGE); fi
+else ifneq '$(USE_PODMAN)' ''
 	if [ "$$(podman images -q $(PYTHON_IMAGE))" = "" ]; then podman pull -q $(PYTHON_IMAGE); fi
 endif
 	$(PYTHON_SHELL) python3 -m venv build/venv-changelog

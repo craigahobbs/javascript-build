@@ -225,11 +225,17 @@ include Makefile.base
 
 ### Other Make Variables
 
+- `USE_DOCKER` - Use [Docker](https://www.docker.com/products/docker-desktop/) and test with the official Node image.
+
+  ~~~
+  make commit USE_DOCKER=1
+  ~~~
+
 - `USE_PODMAN` - Use [podman](https://podman.io/) and test with the official Node image.
 
-~~~
-make commit USE_PODMAN=1
-~~~
+  ~~~
+  make commit USE_PODMAN=1
+  ~~~
 
 
 ## Extending javascript-build

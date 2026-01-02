@@ -1,1 +1,1 @@
-podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X npx eslint eslint.config.js lib/ test/
+npx eslint eslint.config.js lib/ test/
