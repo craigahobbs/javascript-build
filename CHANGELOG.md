@@ -2,6 +2,8 @@
 
 ## 2026-01-13
 
+- [949312e](https://github.com/craigahobbs/javascript-build/commit/949312e) - fix USE_DOCKER and USE_PODMAN
+
 - [36a753d](https://github.com/craigahobbs/javascript-build/commit/36a753d) - add NO_COLOR=1
 
 ## 2026-01-02
