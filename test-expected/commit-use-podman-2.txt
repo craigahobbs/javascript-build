@@ -1,9 +1,9 @@
 if [ "$(podman images -q node:X)" = "" ]; then podman pull -q node:X; fi
-podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X -e NO_COLOR=1 npm install --save-dev c8@'~X.Y' eslint@'~X.Y' jsdoc@'~X.Y'
+podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME -e NO_COLOR=1 node:X npm install --save-dev c8@'~X.Y' eslint@'~X.Y' jsdoc@'~X.Y'
 mkdir -p build/
 touch build/npm.build
-podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X -e NO_COLOR=1 node --test --test-reporter spec $(podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X -e NO_COLOR=1 node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")')
-podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X -e NO_COLOR=1 npx eslint eslint.config.js lib/ test/
-podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X -e NO_COLOR=1 npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md lib/
-podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X -e NO_COLOR=1 npx c8 -o build/coverage --temp-dir build/tmp -r html -r text --100 --all --allowExternal --src lib/ --src test/ \
-  node --test --test-reporter spec $(podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X -e NO_COLOR=1 node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")')
+podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME -e NO_COLOR=1 node:X node --test --test-reporter spec $(podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME -e NO_COLOR=1 node:X node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")')
+podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME -e NO_COLOR=1 node:X npx eslint eslint.config.js lib/ test/
+podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME -e NO_COLOR=1 node:X npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md lib/
+podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME -e NO_COLOR=1 node:X npx c8 -o build/coverage --temp-dir build/tmp -r html -r text --100 --all --allowExternal --src lib/ --src test/ \
+  node --test --test-reporter spec $(podman run -i --rm -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME -e NO_COLOR=1 node:X node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")')
