@@ -1,5 +1,5 @@
-docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X node --test --test-reporter spec $(docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")')
-docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X npx eslint eslint.config.js lib/ test/
-docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md lib/
-docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X npx c8 -o build/coverage --temp-dir build/tmp -r html -r text --100 --all --allowExternal --src lib/ --src test/ \
-  node --test --test-reporter spec $(docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")')
+docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X -e NO_COLOR=1 node --test --test-reporter spec $(docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X -e NO_COLOR=1 node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")')
+docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X -e NO_COLOR=1 npx eslint eslint.config.js lib/ test/
+docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X -e NO_COLOR=1 npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md lib/
+docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X -e NO_COLOR=1 npx c8 -o build/coverage --temp-dir build/tmp -r html -r text --100 --all --allowExternal --src lib/ --src test/ \
+  node --test --test-reporter spec $(docker run -i --rm -u `id -u`:`id -g` -v $HOME:$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$HOME node:X -e NO_COLOR=1 node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")')

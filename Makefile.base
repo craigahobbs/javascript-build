@@ -10,9 +10,11 @@
 # Node
 NODE_IMAGE ?= node:current-slim
 ifneq '$(USE_DOCKER)' ''
-NODE_SHELL := docker run -i --rm -u `id -u`:`id -g` -v $$HOME:$$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$$HOME $(NODE_IMAGE)
+NODE_SHELL := docker run -i --rm -u `id -u`:`id -g` -v $$HOME:$$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$$HOME $(NODE_IMAGE) -e NO_COLOR=1
 else ifneq '$(USE_PODMAN)' ''
-NODE_SHELL := podman run -i --rm -v $$HOME:$$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$$HOME $(NODE_IMAGE)
+NODE_SHELL := podman run -i --rm -v $$HOME:$$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$$HOME $(NODE_IMAGE) -e NO_COLOR=1
+else
+NODE_SHELL := NO_COLOR=1
 endif
 
 # Python

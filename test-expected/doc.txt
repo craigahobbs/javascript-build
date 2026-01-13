@@ -1,4 +1,4 @@
-npm install --save-dev c8@'~X.Y' eslint@'~X.Y' jsdoc@'~X.Y'
+NO_COLOR=1 npm install --save-dev c8@'~X.Y' eslint@'~X.Y' jsdoc@'~X.Y'
 mkdir -p build/
 touch build/npm.build
-npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md lib/
+NO_COLOR=1 npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md lib/
