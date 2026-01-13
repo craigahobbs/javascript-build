@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-01-13
+
+- [36a753d](https://github.com/craigahobbs/javascript-build/commit/36a753d) - add NO_COLOR=1
+
 ## 2026-01-02
 
 - [0d04005](https://github.com/craigahobbs/javascript-build/commit/0d04005) - restore USE_DOCKER
