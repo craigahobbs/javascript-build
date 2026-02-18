@@ -29,7 +29,7 @@ endif
 C8_VERSION ?= ~10.1
 ESLINT_VERSION ?= ~9.39
 JSDOC_VERSION ?= ~4.0
-JSDOM_VERSION ?= ~27.4
+JSDOM_VERSION ?= ~28.1
 
 # node --test
 NODE_TEST_ARGS ?= --test-reporter spec $$($(strip $(NODE_SHELL) node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")'))
