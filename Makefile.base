@@ -26,6 +26,7 @@ endif
 # Develpment dependencies
 C8_VERSION ?= ~10.1
 ESLINT_VERSION ?= ~10.0
+GLOBALS_VERSION ?= ^17.3
 JSDOC_VERSION ?= ~4.0
 JSDOM_VERSION ?= ~28.1
 
@@ -51,7 +52,7 @@ ifneq '$(USE_DOCKER)' ''
 else ifneq '$(USE_PODMAN)' ''
 	if [ "$$(podman images -q $(NODE_IMAGE))" = "" ]; then podman pull -q $(NODE_IMAGE); fi
 endif
-	$(NODE_SHELL) npm install --save-dev c8@'$(C8_VERSION)' eslint@'$(ESLINT_VERSION)' @eslint/js@'$(ESLINT_VERSION)' globals jsdoc@'$(JSDOC_VERSION)'$(if $(USE_JSDOM), jsdom@'$(JSDOM_VERSION)')
+	$(NODE_SHELL) npm install --save-dev c8@'$(C8_VERSION)' eslint@'$(ESLINT_VERSION)' @eslint/js@'$(ESLINT_VERSION)' globals@'$(GLOBALS_VERSION)' jsdoc@'$(JSDOC_VERSION)'$(if $(USE_JSDOM), jsdom@'$(JSDOM_VERSION)')
 	mkdir -p $(dir $@)
 	touch $@
 

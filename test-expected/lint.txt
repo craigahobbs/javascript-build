@@ -1,4 +1,4 @@
-npm install --save-dev c8@'~X.Y' eslint@'~X.Y' @eslint/js@'~X.Y' globals jsdoc@'~X.Y'
+npm install --save-dev c8@'~X.Y' eslint@'~X.Y' @eslint/js@'~X.Y' globals@'~X.Y' jsdoc@'~X.Y'
 mkdir -p build/
 touch build/npm.build
 npx eslint eslint.config.js lib/ test/
