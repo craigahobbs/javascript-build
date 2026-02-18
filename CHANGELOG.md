@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-02-18
+
+- [24d8858](https://github.com/craigahobbs/javascript-build/commit/24d8858) - remove NO_COLOR=1
+
+- [d49a9dd](https://github.com/craigahobbs/javascript-build/commit/d49a9dd) - eslint 10.0
+
+- [ad5bf19](https://github.com/craigahobbs/javascript-build/commit/ad5bf19) - jsdom 28.1
+
 ## 2026-01-13
 
 - [949312e](https://github.com/craigahobbs/javascript-build/commit/949312e) - fix USE_DOCKER and USE_PODMAN
