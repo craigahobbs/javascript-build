@@ -2,6 +2,8 @@
 
 ## 2026-02-18
 
+- [8c7ec3d](https://github.com/craigahobbs/javascript-build/commit/8c7ec3d) - define GLOBALS_VERSION
+
 - [24d8858](https://github.com/craigahobbs/javascript-build/commit/24d8858) - remove NO_COLOR=1
 
 - [d49a9dd](https://github.com/craigahobbs/javascript-build/commit/d49a9dd) - eslint 10.0
