@@ -1,8 +1,8 @@
-NO_COLOR=1 npm install --save-dev c8@'~X.Y' eslint@'~X.Y' jsdoc@'~X.Y'
+npm install --save-dev c8@'~X.Y' eslint@'~X.Y' @eslint/js@'~X.Y' globals jsdoc@'~X.Y'
 mkdir -p build/
 touch build/npm.build
-NO_COLOR=1 node --test --test-reporter spec $(NO_COLOR=1 node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")')
-NO_COLOR=1 npx eslint eslint.config.js lib/ test/
-NO_COLOR=1 npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md lib/
-NO_COLOR=1 npx c8 -o build/coverage --temp-dir build/tmp -r html -r text --100 --all --allowExternal --src lib/ --src test/ \
-  node --test --test-reporter spec $(NO_COLOR=1 node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")')
+node --test --test-reporter spec $(node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")')
+npx eslint eslint.config.js lib/ test/
+npx jsdoc --pedantic -d build/doc/ -c jsdoc.json -r README.md lib/
+npx c8 -o build/coverage --temp-dir build/tmp -r html -r text --100 --all --allowExternal --src lib/ --src test/ \
+  node --test --test-reporter spec $(node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")')

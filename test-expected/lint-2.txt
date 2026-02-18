@@ -1,1 +1,1 @@
-NO_COLOR=1 npx eslint eslint.config.js lib/ test/
+npx eslint eslint.config.js lib/ test/
