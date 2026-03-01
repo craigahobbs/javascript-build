@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-03-01
+
+- [39fb479](https://github.com/craigahobbs/javascript-build/commit/39fb479) - c8 11.0, globals 17.4
+
 ## 2026-02-18
 
 - [8c7ec3d](https://github.com/craigahobbs/javascript-build/commit/8c7ec3d) - define GLOBALS_VERSION
