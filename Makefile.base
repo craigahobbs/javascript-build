@@ -24,9 +24,9 @@ PYTHON_SHELL := podman run -i --rm -v `pwd`:`pwd` -w `pwd` $(PYTHON_IMAGE)
 endif
 
 # Develpment dependencies
-C8_VERSION ?= ~10.1
+C8_VERSION ?= ~11.0
 ESLINT_VERSION ?= ~10.0
-GLOBALS_VERSION ?= ^17.3
+GLOBALS_VERSION ?= ~17.4
 JSDOC_VERSION ?= ~4.0
 JSDOM_VERSION ?= ~28.1
 
