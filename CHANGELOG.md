@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-03-02
+
+- [4704d05](https://github.com/craigahobbs/javascript-build/commit/4704d05) - use node 25.6, not current, for now due to yargs issue
+
 ## 2026-03-01
 
 - [39fb479](https://github.com/craigahobbs/javascript-build/commit/39fb479) - c8 11.0, globals 17.4
