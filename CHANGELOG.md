@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-03-11
+
+- [6336607](https://github.com/craigahobbs/javascript-build/commit/6336607) - use node current docker image after 9 days of node/yargs gankage
+
 ## 2026-03-02
 
 - [4704d05](https://github.com/craigahobbs/javascript-build/commit/4704d05) - use node 25.6, not current, for now due to yargs issue
