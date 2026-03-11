@@ -8,7 +8,7 @@
 
 
 # Node
-NODE_IMAGE ?= node:25.6-trixie-slim
+NODE_IMAGE ?= node:current-slim
 ifneq '$(USE_DOCKER)' ''
 NODE_SHELL := docker run -i --rm -u `id -u`:`id -g` -v $$HOME:$$HOME -v `pwd`:`pwd` -w `pwd` -e HOME=$$HOME $(NODE_IMAGE)
 else ifneq '$(USE_PODMAN)' ''
