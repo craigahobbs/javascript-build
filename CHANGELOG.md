@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-04-01
+
+- [35bea0f](https://github.com/craigahobbs/javascript-build/commit/35bea0f) - eslint 10.1, jsdom 29.0
+
 ## 2026-03-11
 
 - [6336607](https://github.com/craigahobbs/javascript-build/commit/6336607) - use node current docker image after 9 days of node/yargs gankage
