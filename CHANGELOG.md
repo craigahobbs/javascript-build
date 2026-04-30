@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-04-30
+
+- [b4ccd2a](https://github.com/craigahobbs/javascript-build/commit/b4ccd2a) - eslint 10.2, globals 17.5, jsdom 29.1
+
 ## 2026-04-01
 
 - [35bea0f](https://github.com/craigahobbs/javascript-build/commit/35bea0f) - eslint 10.1, jsdom 29.0
