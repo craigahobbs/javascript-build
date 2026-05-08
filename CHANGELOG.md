@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-05-08
+
+- [88e66cf](https://github.com/craigahobbs/javascript-build/commit/88e66cf) - use node 25.6, not current, for now due to yargs issue
+
 ## 2026-04-30
 
 - [b4ccd2a](https://github.com/craigahobbs/javascript-build/commit/b4ccd2a) - eslint 10.2, globals 17.5, jsdom 29.1
