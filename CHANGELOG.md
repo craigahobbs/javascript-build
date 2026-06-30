@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-06-30
+
+- [118beaf](https://github.com/craigahobbs/javascript-build/commit/118beaf) - eslint 10.6, globals 17.7
+
 ## 2026-05-08
 
 - [88e66cf](https://github.com/craigahobbs/javascript-build/commit/88e66cf) - use node 25.6, not current, for now due to yargs issue
