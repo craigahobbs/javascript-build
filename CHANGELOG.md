@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-01
+
+- [26614ac](https://github.com/craigahobbs/javascript-build/commit/26614ac) - c8 12.0, eslint 10.8, globals 17.8, jsdom 30.0
+
 ## 2026-06-30
 
 - [118beaf](https://github.com/craigahobbs/javascript-build/commit/118beaf) - eslint 10.6, globals 17.7
