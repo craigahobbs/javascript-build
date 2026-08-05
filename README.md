@@ -76,7 +76,7 @@ Here is a typical javascript-build project ".gitignore" file:
 /package-lock.json
 ~~~
 
-Notice that "Makefile.base", "eslint.config.js", "jsdoc.json", and are ignored because
+Notice that "Makefile.base", "eslint.config.js", and "jsdoc.json" are ignored because
 they are downloaded by the Makefile.
 
 
@@ -140,8 +140,8 @@ Publish the package to npm.
 
 ### gh-pages
 
-Publish the application or project documentation to GitHub Pages. It first executes the `clean` and
-`commit` targets to produce a clean build.
+Publish the application or project documentation to GitHub Pages. It first executes the `commit`
+target.
 
 The repository is then git-cloned (or pulled) to the "../\<repository-name>.gh-pages" directory, the
 "gh-pages" branch is checked-out, and the directories and files defined by the "GHPAGES_SRC" make
@@ -188,7 +188,8 @@ The following variables are supported:
 
 - `NODE_IMAGE` - The node image.
 
-- `NODE_TEST_ARGS` - The `node --test` command line arguments. Default is "--test-reporter spec test/".
+- `NODE_TEST_ARGS` - The `node --test` command line arguments. Default is "--test-reporter spec"
+  followed by "test/" (Node.js earlier than 22) or the "test/\*\*/\*.js" glob (Node.js 22 and later).
 
 - `C8_VERSION` - The [c8](https://www.npmjs.com/package/c8) package version.
 
@@ -197,6 +198,10 @@ The following variables are supported:
 - `ESLINT_VERSION` - The [eslint](https://www.npmjs.com/package/eslint) package version.
 
 - `ESLINT_ARGS` - The eslint tool's command line arguments. Default is "lib/ test/".
+
+- `ESLINT_JS_VERSION` - The [@eslint/js](https://www.npmjs.com/package/@eslint/js) package version.
+
+- `GLOBALS_VERSION` - The [globals](https://www.npmjs.com/package/globals) package version.
 
 - `JSDOC_VERSION` - The [jsdoc](https://www.npmjs.com/package/jsdoc) package version.
 

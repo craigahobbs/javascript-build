@@ -1,4 +1,4 @@
 python3 -m venv build/venv-changelog
-build/venv-changelog/bin/pip install -U pip setuptools wheel simple-git-changelog
+build/venv-changelog/bin/pip install -U pip simple-git-changelog
 touch build/venv-changelog.build
 build/venv-changelog/bin/simple-git-changelog

@@ -9,7 +9,7 @@ export default [
     js.configs.all,
     {
         'languageOptions': {
-            'ecmaVersion': 2022,
+            'ecmaVersion': 'latest',
             'globals': {
                 ...globals.browser
             }

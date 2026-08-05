@@ -23,7 +23,7 @@ else ifneq '$(USE_PODMAN)' ''
 PYTHON_SHELL := podman run -i --rm -v `pwd`:`pwd` -w `pwd` $(PYTHON_IMAGE)
 endif
 
-# Develpment dependencies
+# Development dependencies
 C8_VERSION ?= ~12.0
 ESLINT_VERSION ?= ~10.8
 ESLINT_JS_VERSION ?= ~10.0
@@ -32,7 +32,7 @@ JSDOC_VERSION ?= ~4.0
 JSDOM_VERSION ?= ~30.0
 
 # node --test
-NODE_TEST_ARGS ?= --test-reporter spec $$($(strip $(NODE_SHELL) node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")'))
+NODE_TEST_ARGS ?= --test-reporter spec "$$($(strip $(NODE_SHELL) node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")'))"
 
 # C8
 C8_ARGS ?= --100 --all --allowExternal --src lib/ --src test/
@@ -139,5 +139,5 @@ else ifneq '$(USE_PODMAN)' ''
 	if [ "$$(podman images -q $(PYTHON_IMAGE))" = "" ]; then podman pull -q $(PYTHON_IMAGE); fi
 endif
 	$(PYTHON_SHELL) python3 -m venv build/venv-changelog
-	$(PYTHON_SHELL) build/venv-changelog/bin/pip install -U pip setuptools wheel simple-git-changelog
+	$(PYTHON_SHELL) build/venv-changelog/bin/pip install -U pip simple-git-changelog
 	touch $@
