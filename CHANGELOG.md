@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-08-05
+
+- [9e22a03](https://github.com/craigahobbs/javascript-build/commit/9e22a03) - fix test glob quoting, ecmaVersion latest, remove setuptools/wheel, README fixes, add CLAUDE.md
+
 ## 2026-08-01
 
 - [26614ac](https://github.com/craigahobbs/javascript-build/commit/26614ac) - c8 12.0, eslint 10.8, globals 17.8, jsdom 30.0
