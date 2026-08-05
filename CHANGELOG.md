@@ -2,6 +2,8 @@
 
 ## 2026-08-05
 
+- [906eabb](https://github.com/craigahobbs/javascript-build/commit/906eabb) - npm install --no-audit --no-fund, sync parallel build output by target
+
 - [9e22a03](https://github.com/craigahobbs/javascript-build/commit/9e22a03) - fix test glob quoting, ecmaVersion latest, remove setuptools/wheel, README fixes, add CLAUDE.md
 
 ## 2026-08-01
