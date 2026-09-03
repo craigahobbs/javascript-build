@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-03
+
+- [2b29a70](https://github.com/craigahobbs/javascript-build/commit/2b29a70) - eslint 10.9, globals 17.12
+
 ## 2026-08-05
 
 - [73faf4f](https://github.com/craigahobbs/javascript-build/commit/73faf4f) - use node:current-slim again
