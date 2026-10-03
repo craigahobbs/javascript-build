@@ -30,11 +30,11 @@ endif
 
 # Development dependencies
 C8_VERSION ?= ~12.0
-ESLINT_VERSION ?= ~10.9
+ESLINT_VERSION ?= ~10.12
 ESLINT_JS_VERSION ?= ~10.0
-GLOBALS_VERSION ?= ~17.12
+GLOBALS_VERSION ?= ~17.13
 JSDOC_VERSION ?= ~4.0
-JSDOM_VERSION ?= ~30.0
+JSDOM_VERSION ?= ~30.1
 
 # node --test
 NODE_TEST_ARGS ?= --test-reporter spec "$$($(strip $(NODE_SHELL) node -e 'console.log(process.version < "v22.0.0" ? "test/" : "test/**/*.js")'))"
