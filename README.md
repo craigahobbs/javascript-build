@@ -192,17 +192,15 @@ make -j commit
 ## Make Variables
 
 javascript-build exposes several make variables that can be modified in your makefile following the
-base makefile include. For example, to change the Node image:
+base makefile include. For example, to change the eslint tool's arguments:
 
 ~~~ make
 include Makefile.base
 
-NODE_IMAGE := node:15
+ESLINT_ARGS := lib/ test/ scripts/
 ~~~
 
 The following variables are supported:
-
-- `NODE_IMAGE` - The node image.
 
 - `NODE_TEST_ARGS` - The `node --test` command line arguments. Default is "--test-reporter spec"
   followed by "test/" (Node.js earlier than 22) or the "test/\*\*/\*.js" glob (Node.js 22 and later).
@@ -231,8 +229,8 @@ The following variables are supported:
 ### Pre-Include Make Variables
 
 The following make variables must be defined prior to the inclusion of the base makefile. This is
-because they modify the make targets that javascript-build generates on include. For example, to
-override the gh-pages source directories and files:
+because they modify the make targets and commands that javascript-build generates on include. For
+example, to override the gh-pages source directories and files:
 
 ~~~ make
 GHPAGES_SRC := lib/my-static-application/
@@ -242,6 +240,9 @@ include Makefile.base
 
 - `GHPAGES_SRC` - The gh-pages target's source directories and files. Directories must end with a
   slash ("/"). Default is "build/doc/".
+
+- `NODE_IMAGE` - The Node image for the `USE_DOCKER` and `USE_PODMAN` options. Default is
+  "node:current-slim".
 
 
 ### Other Make Variables
