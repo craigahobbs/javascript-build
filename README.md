@@ -83,17 +83,17 @@ they are downloaded by the Makefile.
 
 ## Coding Agents
 
-[AGENTS.md](AGENTS.md) is for coding agents working **in this repository**.
+[CLAUDE.md](CLAUDE.md) is for coding agents working **in this repository**.
 
 [SKILL.md](SKILL.md) is for agents working in **downstream** javascript-build packages. Load it from
 `../javascript-build/SKILL.md` if that file exists, otherwise from the raw source
 [https://raw.githubusercontent.com/craigahobbs/javascript-build/main/SKILL.md](https://raw.githubusercontent.com/craigahobbs/javascript-build/main/SKILL.md).
 
-Consumer `AGENTS.md` files should point at those locations and keep only package-specific
+Consumer `CLAUDE.md` files should point at those locations and keep only package-specific
 contracts locally.
 
 This README remains the human reference for targets and variables. Do not duplicate that
-catalog in the skill or in consumer `AGENTS.md` files.
+catalog in the skill or in consumer `CLAUDE.md` files.
 
 
 ## Make Targets

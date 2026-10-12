@@ -8,7 +8,7 @@ description: >
 
 # javascript-build (downstream)
 
-This skill is the build workflow for **packages that include** javascript-build. Package-specific behavior stays in the consumer `AGENTS.md`. Human reference for every target and variable is `README.md` in the same directory as this skill. Do not use this skill when changing `Makefile.base` itself — that is javascript-build's `AGENTS.md`.
+This skill is the build workflow for **packages that include** javascript-build. Package-specific behavior stays in the consumer `CLAUDE.md`. Human reference for every target and variable is `README.md` in the same directory as this skill. Do not use this skill when changing `Makefile.base` itself — that is javascript-build's `CLAUDE.md`.
 
 Load this file from `../javascript-build/SKILL.md` if that file exists, otherwise from [https://raw.githubusercontent.com/craigahobbs/javascript-build/main/SKILL.md](https://raw.githubusercontent.com/craigahobbs/javascript-build/main/SKILL.md). If neither is available, `make help` and the consumer `Makefile` are enough for day-to-day work; do not invent a second toolchain.
 
@@ -57,7 +57,7 @@ Version for packages is `version` in `package.json`. Bump it only as part of a r
 
 ## Local overrides
 
-After this skill, read the consumer `Makefile` and `AGENTS.md`. Common knobs (full catalog in the README):
+After this skill, read the consumer `Makefile` and `CLAUDE.md`. Common knobs (full catalog in the README):
 
 - `USE_JSDOM` — add jsdom as a development dependency
 - `ESLINT_ARGS` — eslint paths (default `lib/ test/`; often appended after include)

@@ -1,4 +1,4 @@
-# AGENTS.md
+# CLAUDE.md
 
 Notes for coding agents working **in this repository**. Downstream packages that *include* javascript-build should follow [SKILL.md](SKILL.md), not this file.
 
@@ -8,7 +8,7 @@ javascript-build is a GNU Make build system. The makefiles and shared configs *a
 
 | File | Role |
 | --- | --- |
-| `Makefile.base` | Build system consumers `include`. Targets: `test`, `lint`, `doc`, `cover`, `commit`, `publish`, `changelog`, `gh-pages`, `clean`, `superclean` |
+| `Makefile.base` | Build system consumers `include`. Targets: `help`, `test`, `lint`, `doc`, `cover`, `commit`, `publish`, `changelog`, `gh-pages`, `clean`, `superclean` |
 | `eslint.config.js` | Shared ESLint config (no snapshot tests; consumers re-download it) |
 | `jsdoc.json` | Shared JSDoc config (no snapshot tests; consumers re-download it) |
 | `SKILL.md` | Agent playbook for **downstream** packages |
@@ -35,25 +35,26 @@ Do not run `make changelog` unless asked. There is no `cover` / `lint` / `publis
 Snapshots of `make -n` (dry-run command text), not of execution.
 
 1. Fixture `tests/<name>/Makefile` sets placeholder versions (`NODE_IMAGE := node:X`, `C8_VERSION := ~X.Y`, ...) and `include ../../Makefile.base`.
-2. `TEST_RULE` in the top-level Makefile runs `make -C tests/<name>/ -n …`, rewrites `make[2]` → `make[X]` in "Nothing to be done" lines, and diffs `test-actual/<name>.txt` against `test-expected/<name>.txt`.
+2. `TEST_RULE` in the top-level Makefile runs `make -C tests/<name>/ -n --no-print-directory …`, rewrites `make[N]` → `make[X]` and the opening backtick → `'` in "Nothing to be done" lines (so output matches GNU Make 3.81 and 4.x), and diffs `test-actual/<name>.txt` against `test-expected/<name>.txt`. `make test` stops at the first diff; use `make -k test` to see every failure.
 3. Checked-in empty markers skip install recipes in the dry run:
    - `build/npm.build` — npm install already done
    - `build/venv-changelog.build` — changelog venv already created
-4. `-2` fixtures pair with the unmarked fixture. For host tests, unmarked shows install (`tests/commit/`) and `-2` has the marker (`tests/commit-2/`). For `USE_DOCKER` / `USE_PODMAN`, unmarked has the marker and `-2` shows image pull plus install.
+4. `-2` fixtures pair with the unmarked fixture. For host tests, unmarked shows install (`tests/commit/`) and `-2` has the marker (`tests/commit-2/`). For `USE_DOCKER` / `USE_PODMAN`, unmarked has the marker and `-2` shows image pull plus install. Fixtures without a `-2` (changelog, clean, help, superclean, test-use-jsdom) carry no marker.
 5. On failure, `test-actual/<name>.txt` is left in place. If the change is intentional, copy it to `test-expected/<name>.txt` in the same commit. Never commit `test-actual/`.
 6. To add a test: fixture Makefile (+ markers as needed), `$(eval $(call TEST_RULE, <name>, <goal and vars>))` in the top-level Makefile, and `test-expected/<name>.txt`.
-7. The top-level Makefile sets `OS := Unknown` and unexports `USE_DOCKER` / `USE_PODMAN` so output is platform-stable. Do not remove that. The changelog venv uses `VENV_BIN` (`bin` vs `Scripts`); do not delete that Windows branch as unused.
+7. The top-level Makefile sets `OS := Unknown` (a guard; `Makefile.base` has no OS-specific code today) and unexports `USE_DOCKER` / `USE_PODMAN` so environment values don't leak into fixtures. Do not remove that. Never pass `USE_DOCKER=` / `USE_PODMAN=` on the `make test` command line — command-line variables reach the sub-make and break every host fixture. This repo's own `make changelog` uses `build/venv/` and `VENV_BIN` (`bin` vs `Scripts`); do not delete that Windows branch as unused.
 
-Fixtures override `NODE_IMAGE` to `node:X` and tool versions to `~X.Y`. Changing the default `NODE_IMAGE` or pinned versions in `Makefile.base` does not update snapshots; it still needs a README update when user-facing.
+Fixtures set `NODE_IMAGE := node:X`, and fixtures that run npm install also set the `*_VERSION` pins to `~X.Y`. Changing the default `NODE_IMAGE` or pinned versions in `Makefile.base` does not update snapshots; it still needs a README update when user-facing. `PYTHON_IMAGE` is **not** overridden — changing its default changes the `changelog-use-{docker,podman}` snapshots.
 
-`test-use-jsdom` is the pass-through for `USE_JSDOM`. New variables that appear in recipes should show up in a snapshot that prints them.
+`test-use-jsdom` is the pass-through for `USE_JSDOM`. New variables that appear in recipes should show up in a snapshot that prints them. Currently unsnapshotted: `TEST=`, `superclean` under docker/podman, and `GHPAGES_SRC` / `*_ARGS` overrides — add a fixture if you change those paths.
 
 ## `Makefile.base`
 
 - System Node by default. `USE_DOCKER=1` / `USE_PODMAN=1` sets `NODE_SHELL` (and `PYTHON_SHELL` for changelog) to `docker run` / `podman run`.
 - `build/npm.build` is the npm install marker. Recipes that need `node_modules` depend on it.
 - `commit` is `test` + `lint` + `doc` + `cover`. `publish` and `gh-pages` depend on `commit` so parallel `make -j publish` cannot upload before tests finish. Do not drop that.
-- `GHPAGES_SRC` is read at include time. Empty disables the `gh-pages` target. Changing when it is expanded can silently ignore consumer Makefiles.
+- Each public target is `x: _x` with the recipe on `_x`, so consumers can extend `x`. Keep that for new targets, and add them to the `_help` usage string (snapshotted in `help.txt`).
+- `GHPAGES_SRC` is read at include time (`ifneq`); empty disables the `gh-pages` target. `NODE_SHELL` / `PYTHON_SHELL` are `:=`, so `NODE_IMAGE` / `PYTHON_IMAGE` reach `docker run` only if set before the `include`. Fixtures always set variables before `include`, so snapshots won't catch expansion-timing changes.
 - `USE_JSDOM` appends jsdom to the npm install line.
 - Pinned versions (`C8_VERSION`, `ESLINT_VERSION`, …) sit near the top of `Makefile.base`. Test fixtures override them, so bumps do not change snapshots.
 - `NODE_TEST_ARGS` embeds a `node -e` that selects `test/` vs `test/**/*.js` by Node version. Changing that string updates snapshots.
